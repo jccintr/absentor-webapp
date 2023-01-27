@@ -36,7 +36,7 @@ const Login = () => {
           />
         </div>
 
-        <button onClick={()=>alert('Tocou no botão Entrar')}className={styles.botao}>Entrar</button>
+        <button onClick={()=>alert('Ainda não disponível !')} className={styles.botao}>Entrar</button>
     </div>
   )
 }
