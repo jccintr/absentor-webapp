@@ -4,22 +4,23 @@ import logo from "../../assets/logo-absentor-310x220.png";
 import { FaRegUser } from "react-icons/fa";
 import {IoKeyOutline} from "react-icons/io5";
 import Api from '../../Api';
+import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Login = ({setLogged}) => {
     const [email,setEmail] = useState('');
     const [password,setPassword] = useState('');
-
+    const navigate = useNavigate();
 
     const onSignIn = async () =>{
      
       let response = await Api.signIn(email,password);
       if(response.status===200){
         
-         let json = await response.json();
-         const token = json.token;
-         alert(json.role);
-         //setLogged(true);
-        // navigate('/home');
+         let jsonUser = await response.json();
+         const token = jsonUser.token;
+        
+         setLogged(true);
+        navigate("/main", {state:{user: jsonUser}});
       }
       else{
        alert("Nome de usuário ou senha inválidos.");

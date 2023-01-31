@@ -1,18 +1,33 @@
 header {
     display: flex;
     background-color: var(--backgroundColor); 
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
     height: 80px;
     width: 350px;
     border-bottom-color: var(--primaryColor);
     border-bottom-width:  1px;
     border-bottom-style: solid;
 }
+header div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+}
+header p {
+    font-size: 10px;
+    color: white;
+}
 
 .logo {
     width: 150px;
     height: 47px;
-    
  }
+
+.icon {
+    color: white;
+    margin-left: 10px;
+    margin-right:10px;
+  }
