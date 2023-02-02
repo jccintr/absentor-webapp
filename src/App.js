@@ -5,6 +5,8 @@ import PrivateRoutes from "./PrivateRoutes";
 import {BrowserRouter,Routes, Route } from "react-router-dom";
 import Login from './pages/login/Login';
 import Main from './pages/main/Main';
+import Empresas from "./pages/empresas/Empresas";
+import DetEmpresa from "./pages/detEmpresa/DetEmpresa";
 
 
 function App() {
@@ -16,6 +18,8 @@ function App() {
               <Route path="/" element={<Login setLogged={setLogged}/>} />
               <Route element={<PrivateRoutes logged={logged}/>} >
                    <Route path="/main" element={<Main setLogged={setLogged}/>}/>
+                   <Route path="/empresas" element={<Empresas setLogged={setLogged}/>}/>
+                   <Route path="/detempresa" element={<DetEmpresa setLogged={setLogged}/>}/>
               </Route>
           </Routes>
        </BrowserRouter>

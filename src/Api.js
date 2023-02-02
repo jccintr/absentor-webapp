@@ -10,7 +10,7 @@ export default {
  base_storage: 'http://localhost:8000/storage',
 //    base_storage: 'http://192.168.0.107:8000/storage',
    // base_storage: 'http://177.104.209.216:8000/storage',
- base_storage: 'https://tripsun.tk/storage',
+ //base_storage: 'https://tripsun.tk/storage',
    /*
     checkToken: async (token) => {
         const req = await fetch(`${BASE_API}/auth/refresh`, {
@@ -78,7 +78,40 @@ export default {
         return json;
     },
     */
-
+   // endpoints Empresa
+   getEmpresas: async () => {
+    const req = await fetch(`${BASE_API}/empresas`);
+    const json = await req.json();
+    return json;
+},
+   addEmpresa: async (nome) => {
+    const response = await fetch(`${BASE_API}/empresas`, {
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({nome})
+    });
+    return response;
+   },
+   getEmpresa: async (id) => {
+    const req = await fetch(`${BASE_API}/empresas/${id}`);
+    const json = await req.json();
+    return json;
+},
+updateEmpresa: async (id,nome) => {
+    const response = await fetch(`${BASE_API}/empresas/${id}`, {
+        method: 'PUT',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({nome})
+    });
+    //const json = await req.json();
+    return response;
+},
    // Rotas da Cidade
     getCidades: async () => {
         const req = await fetch(`${BASE_API}/cidades`);

@@ -26,13 +26,11 @@ const Main = ({setLogged}) => {
             {!user.isAdmin ? <h2>{user.empresa.nome}</h2>:''}
             <h4>Olá {user.name} ! O que você deseja ?</h4>
             <div className={styles.blueline}></div>
-            {user.role===0&&<MenuAdmin/>}
+            {user.role===0&&<MenuAdmin user={user}/>}
             {user.role===1&&<MenuGerente/>}
             {user.role===2&&<MenuFuncionario/>}
-           
         </div>
-       
-    </div>
+     </div>
   )
 }
 
