@@ -37,4 +37,9 @@ h4 {
     color: var(--primaryColor);
 }
 
+.noRecords {
+    color: var(--primaryColor);
+    font-size: 14px;
+}
+
  

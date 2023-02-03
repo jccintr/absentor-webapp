@@ -12,11 +12,16 @@ const UsersEmpresa = ({setLogged}) => {
   const params = useLocation();
   let user = params.state.user;
   let idEmpresa = params.state.empresa.id;
-
+  let nomeEmpresa = params.state.empresa.nome;
+  
   useEffect(()=>{
     const getUsersEmpresa = async () =>{
-       let json = await Api.getUsersEmpresa(idEmpresa);
-       setUsers(json);
+       let response = await Api.getUsersEmpresa(idEmpresa);
+       if (response.status === 200){
+        const json = await response.json();
+        setUsers(json);
+       }
+       
     };
     getUsersEmpresa();
 },[]);
@@ -42,8 +47,10 @@ const onEdit  = async (id) => {
     <div className={styles.container}>
         <Header onLogout={onLogout} userRole={user.role} showBackButton={true}/>
         <div className={styles.body}>
+            <h2>{nomeEmpresa}</h2>
             <h4>Funcionários</h4>
             <div className={styles.blueline}></div>
+            {users.length===0&&<h5 className={styles.noRecords}>Esta empresa ainda não tem funcionários.</h5>}
             <TableUsers users={users} onEdit={onEdit}/> 
         </div>
         <FaPlusCircle className={styles.addButton} size={50} onClick={onAdd} /> 

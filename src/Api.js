@@ -113,9 +113,9 @@ updateEmpresa: async (id,nome) => {
     return response;
 },
 getUsersEmpresa: async (idEmpresa) => {
-    const req = await fetch(`${BASE_API}/empresas/${idEmpresa}/users`);
-    const json = await req.json();
-    return json;
+    const response = await fetch(`${BASE_API}/empresas/${idEmpresa}/users`);
+    //const json = await req.json();
+    return response;
 },
 // Endpoints dos funcionários
 getUsers: async () => {
