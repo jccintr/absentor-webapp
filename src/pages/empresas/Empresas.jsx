@@ -34,6 +34,12 @@ const Empresas = ({setLogged}) => {
          navigate("/detempresa", {state:{user: user,empresa: jsonEmpresa, editando: true}});
     }
 
+    const onListUsers = async (idEmpresa) => {
+      //let jsonUsers = await Api.getUsersEmpresa(idEmpresa);
+      let jsonEmpresa = await Api.getEmpresa(idEmpresa);
+      navigate("/empresa/users", {state:{user: user,empresa: jsonEmpresa}});
+    }
+
 
   return (
     <div className={styles.container}>
@@ -41,7 +47,7 @@ const Empresas = ({setLogged}) => {
         <div className={styles.body}>
             <h4>Empresas</h4>
             <div className={styles.blueline}></div>
-            <TableEmpresas empresas={empresas} onEdit={onEdit}/> 
+            <TableEmpresas empresas={empresas} onEdit={onEdit} onListUsers={onListUsers}/> 
         </div>
         <FaPlusCircle className={styles.addButton} size={50} onClick={onAdd} /> 
    </div>

@@ -7,6 +7,7 @@ import Login from './pages/login/Login';
 import Main from './pages/main/Main';
 import Empresas from "./pages/empresas/Empresas";
 import DetEmpresa from "./pages/detEmpresa/DetEmpresa";
+import UsersEmpresa from "./pages/usersEmpresa/UsersEmpresa";
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
                    <Route path="/main" element={<Main setLogged={setLogged}/>}/>
                    <Route path="/empresas" element={<Empresas setLogged={setLogged}/>}/>
                    <Route path="/detempresa" element={<DetEmpresa setLogged={setLogged}/>}/>
+                   <Route path="/empresa/users" element={<UsersEmpresa setLogged={setLogged}/>}/>
               </Route>
           </Routes>
        </BrowserRouter>

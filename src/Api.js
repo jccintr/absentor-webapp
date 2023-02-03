@@ -112,6 +112,17 @@ updateEmpresa: async (id,nome) => {
     //const json = await req.json();
     return response;
 },
+getUsersEmpresa: async (idEmpresa) => {
+    const req = await fetch(`${BASE_API}/empresas/${idEmpresa}/users`);
+    const json = await req.json();
+    return json;
+},
+// Endpoints dos funcionários
+getUsers: async () => {
+    const req = await fetch(`${BASE_API}/users`);
+    const json = await req.json();
+    return json;
+},
    // Rotas da Cidade
     getCidades: async () => {
         const req = await fetch(`${BASE_API}/cidades`);
