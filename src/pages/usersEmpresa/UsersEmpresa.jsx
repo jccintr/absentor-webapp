@@ -11,6 +11,8 @@ const UsersEmpresa = ({setLogged}) => {
   const navigate = useNavigate();
   const params = useLocation();
   let user = params.state.user;
+  let empresa = params.state.empresa;
+ 
   let idEmpresa = params.state.empresa.id;
   let nomeEmpresa = params.state.empresa.nome;
   
@@ -32,13 +34,14 @@ const onLogout = () => {
   }
 
   const onAdd = () => {
-    alert("Ainda não disponível !");
-   // navigate("/detuser", {state:{user: user,empresa: null, editando: false}});
+  
+   navigate("/user", {state:{user: user,userEdit: null, editando: false,empresa: empresa}});
 }
 
 const onEdit  = async (id) => {
- // let jsonUser = await Api.getUser(id);
- //  navigate("/detUser", {state:{user: user,user2: jsonUser, editando: true}});
+  let jsonUser = await Api.getUser(id);
+  
+  navigate("/user", {state:{user: user,userEdit: jsonUser, editando: true}});
 }
 
 

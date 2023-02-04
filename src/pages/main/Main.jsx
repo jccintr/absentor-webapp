@@ -27,7 +27,7 @@ const Main = ({setLogged}) => {
             <h4>Olá {user.name} ! O que você deseja ?</h4>
             <div className={styles.blueline}></div>
             {user.role===0&&<MenuAdmin user={user}/>}
-            {user.role===1&&<MenuGerente/>}
+            {user.role===1&&<MenuGerente user={user}/>}
             {user.role===2&&<MenuFuncionario/>}
         </div>
      </div>
