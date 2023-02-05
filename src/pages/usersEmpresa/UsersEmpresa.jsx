@@ -40,9 +40,13 @@ const onLogout = () => {
 
 const onEdit  = async (id) => {
   let jsonUser = await Api.getUser(id);
-  
   navigate("/user", {state:{user: user,userEdit: jsonUser, editando: true}});
 }
+
+const onView  = async (id) => {
+  let jsonUser = await Api.getUser(id);
+  navigate("/user/view", {state:{user: user, userView: jsonUser}});
+ }
 
 
 
@@ -54,7 +58,7 @@ const onEdit  = async (id) => {
             <h4>Funcionários</h4>
             <div className={styles.blueline}></div>
             {users.length===0&&<h5 className={styles.noRecords}>Esta empresa ainda não tem funcionários.</h5>}
-            <TableUsers users={users} onEdit={onEdit}/> 
+            <TableUsers users={users} onEdit={onEdit} onView={onView}/> 
         </div>
         <FaPlusCircle className={styles.addButton} size={50} onClick={onAdd} /> 
    </div>

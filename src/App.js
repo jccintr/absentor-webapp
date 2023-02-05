@@ -9,6 +9,7 @@ import Empresas from "./pages/empresas/Empresas";
 import DetEmpresa from "./pages/detEmpresa/DetEmpresa";
 import UsersEmpresa from "./pages/usersEmpresa/UsersEmpresa";
 import DetUser from "./pages/detUser/DetUser";
+import ViewUser from "./pages/viewUser/ViewUser";
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
                    <Route path="/detempresa" element={<DetEmpresa setLogged={setLogged}/>}/>
                    <Route path="/empresa/users" element={<UsersEmpresa setLogged={setLogged}/>}/>
                    <Route path="/user" element={<DetUser setLogged={setLogged}/>}/>
+                   <Route path="/user/view" element={<ViewUser setLogged={setLogged}/>}/>
               </Route>
           </Routes>
        </BrowserRouter>
