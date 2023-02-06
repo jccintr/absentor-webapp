@@ -10,6 +10,7 @@ import DetEmpresa from "./pages/detEmpresa/DetEmpresa";
 import UsersEmpresa from "./pages/usersEmpresa/UsersEmpresa";
 import DetUser from "./pages/detUser/DetUser";
 import ViewUser from "./pages/viewUser/ViewUser";
+import Avatar from "./pages/avatar/Avatar";
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
                    <Route path="/empresa/users" element={<UsersEmpresa setLogged={setLogged}/>}/>
                    <Route path="/user" element={<DetUser setLogged={setLogged}/>}/>
                    <Route path="/user/view" element={<ViewUser setLogged={setLogged}/>}/>
+                   <Route path="/avatar" element={<Avatar setLogged={setLogged}/>}/>
               </Route>
           </Routes>
        </BrowserRouter>
