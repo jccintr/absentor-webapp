@@ -1,13 +1,14 @@
-import React, {useRef,useState} from 'react'
+import React, {useRef,useState,useContext} from 'react'
 import { useLocation,useNavigate } from 'react-router-dom';
 import Api from '../../Api';
 import Header from '../../components/header/Header';
 import styles from "./styles.module.css";
 import { RxAvatar } from "react-icons/rx";
+import DataContext from '../../context/DataContext';
 
 
-
-const Avatar = ({setLogged}) => {
+const Avatar = () => {
+  const {setLogged} = useContext(DataContext);
   const imgRef = useRef();
   const [novoAvatar,setNovoAvatar] = useState(null);
   const navigate = useNavigate();

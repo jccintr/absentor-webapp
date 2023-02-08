@@ -6,8 +6,11 @@ import styles from "./styles.module.css";
 import MenuFuncionario from '../../components/menuFuncionario/MenuFuncionario';
 import MenuGerente from '../../components/menuGerente/MenuGerente';
 import MenuAdmin from '../../components/menuAdmin/MenuAdmin';
+import { useContext } from 'react';
+import DataContext from '../../context/DataContext';
 
-const Main = ({setLogged}) => {
+const Main = () => {
+  const {setLogged} = useContext(DataContext);
   const params = useLocation();
   let user = params.state.user;
   const navigate = useNavigate();

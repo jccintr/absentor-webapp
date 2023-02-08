@@ -5,11 +5,14 @@ import { FaRegUser } from "react-icons/fa";
 import {IoKeyOutline} from "react-icons/io5";
 import Api from '../../Api';
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import DataContext from '../../context/DataContext';
 
-const Login = ({setLogged}) => {
+const Login = () => {
     const [email,setEmail] = useState('');
     const [password,setPassword] = useState('');
     const navigate = useNavigate();
+    const {setLogged,logged} = useContext(DataContext);
 
     const onSignIn = async () =>{
      

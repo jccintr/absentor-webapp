@@ -17,24 +17,24 @@ import DataContext from "./context/DataContext";
 
 
 function App() {
-  const [logged,setLogged] = useState(false);
+  const {setLogged,logged} = useContext(DataContext);
   return (
     <div className="app">
       <DataProvider>
-       <BrowserRouter>
-           <Routes>
-              <Route path="/" element={<Login setLogged={setLogged}/>} />
-              <Route element={<PrivateRoutes logged={logged}/>} >
-                   <Route path="/main" element={<Main setLogged={setLogged}/>}/>
-                   <Route path="/empresas" element={<Empresas setLogged={setLogged}/>}/>
-                   <Route path="/detempresa" element={<DetEmpresa setLogged={setLogged}/>}/>
-                   <Route path="/empresa/users" element={<UsersEmpresa setLogged={setLogged}/>}/>
-                   <Route path="/user" element={<DetUser setLogged={setLogged}/>}/>
-                   <Route path="/user/view" element={<ViewUser setLogged={setLogged}/>}/>
-                   <Route path="/avatar" element={<Avatar setLogged={setLogged}/>}/>
-              </Route>
-          </Routes>
-       </BrowserRouter>
+          <BrowserRouter>
+              <Routes>
+                  <Route path="/" element={<Login setLogged={setLogged}/>} />
+                  <Route element={<PrivateRoutes logged={logged}/>} >
+                      <Route path="/main" element={<Main/>}/>
+                      <Route path="/empresas" element={<Empresas/>}/>
+                      <Route path="/detempresa" element={<DetEmpresa />}/>
+                      <Route path="/empresa/users" element={<UsersEmpresa />}/>
+                      <Route path="/user" element={<DetUser/>}/>
+                      <Route path="/user/view" element={<ViewUser/>}/>
+                      <Route path="/avatar" element={<Avatar/>}/>
+                  </Route>
+              </Routes>
+          </BrowserRouter>
        </DataProvider>
   </div>
   );

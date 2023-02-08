@@ -1,10 +1,10 @@
 import { createContext,useState,useEffect } from "react";
-//import { Routes, Route } from "react-router-dom";
+
 
 const DataContext = createContext({});
 
 export const DataProvider = ({children}) => {
-   
+    const [logged,setLogged] = useState(false);
 
 
 
@@ -12,6 +12,8 @@ export const DataProvider = ({children}) => {
 
   return (
       <DataContext.Provider value={{
+        logged,
+        setLogged
        /*
         produtos,
         produtosBackup,

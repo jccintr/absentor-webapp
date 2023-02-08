@@ -1,16 +1,18 @@
-import React, {useEffect,useState} from 'react'
+import React, {useEffect,useState,useContext} from 'react'
 import { useLocation,useNavigate } from 'react-router-dom';
 import Api from '../../Api';
 import Header from '../../components/header/Header';
 import styles from "./styles.module.css";
 import TableEmpresas from '../../components/tableEmpresas/TableEmpresas';
 import { FaPlusCircle } from "react-icons/fa";
+import DataContext from '../../context/DataContext';
 
-const Empresas = ({setLogged}) => {
+const Empresas = () => {
     const [empresas,setEmpresas] = useState([]);
     const navigate = useNavigate();
     const params = useLocation();
     let user = params.state.user;
+    const {setLogged} = useContext(DataContext);
 
     useEffect(()=>{
         const getEmpresas = async () =>{

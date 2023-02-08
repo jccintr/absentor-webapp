@@ -1,11 +1,13 @@
-import React, {useEffect,useState} from 'react'
+import React, {useContext} from 'react'
 import { useLocation,useNavigate } from 'react-router-dom';
 import Api from '../../Api';
 import Header from '../../components/header/Header';
 import styles from "./styles.module.css";
 import { RxAvatar } from "react-icons/rx";
+import DataContext from '../../context/DataContext';
 
-const ViewUser = ({setLogged}) => {
+const ViewUser = () => {
+    const {setLogged} = useContext(DataContext);
     const cargos = ['Admin','Gerente','Funcionário'];
     const navigate = useNavigate();
     const params = useLocation();

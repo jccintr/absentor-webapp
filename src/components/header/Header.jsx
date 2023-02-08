@@ -5,7 +5,9 @@ import { useNavigate } from 'react-router-dom';
 import { BiLogOut } from "react-icons/bi";
 import { BiArrowBack } from "react-icons/bi";
 
+
 const Header = ({onLogout,userRole,showBackButton}) => {
+
   const navigate = useNavigate();
   const cargos = ['Admin','Gerente','Funcionário'];
 

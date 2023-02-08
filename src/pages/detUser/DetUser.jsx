@@ -1,11 +1,13 @@
-import React, {useEffect,useState} from 'react'
+import React, {useContext,useState} from 'react'
 import { useLocation,useNavigate } from 'react-router-dom';
 import Api from '../../Api';
 import Header from '../../components/header/Header';
 import InputField from '../../components/inputField/InputField';
 import styles from "./styles.module.css";
+import DataContext from '../../context/DataContext';
 
-const DetUser = ({setLogged}) => {
+const DetUser = () => {
+  const {setLogged} = useContext(DataContext);
   const navigate = useNavigate();
   const params = useLocation();
   const [idUser,setIdUser] = useState(params.state.userEdit===null?'':params.state.userEdit.id);

@@ -1,15 +1,16 @@
-import React, {useEffect,useState} from 'react'
+import React, {useContext,useState} from 'react'
 import { useLocation,useNavigate } from 'react-router-dom';
 import Api from '../../Api';
 import Header from '../../components/header/Header';
 import InputField from '../../components/inputField/InputField';
 import styles from "./styles.module.css";
+import DataContext from '../../context/DataContext';
 
 
-const DetEmpresa = ({setLogged}) => {
+const DetEmpresa = () => {
     const navigate = useNavigate();
     const params = useLocation();
-    
+    const {setLogged} = useContext(DataContext);
     const [nome,setNome] = useState(params.state.empresa===null?'':params.state.empresa.nome);
     const [idEmpresa,setIdEmpresa] =  useState(params.state.empresa===null?'':params.state.empresa.id);//useState(params.state.empresa.id);
     let user = params.state.user;
