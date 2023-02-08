@@ -28,7 +28,7 @@ const Main = ({setLogged}) => {
             <div className={styles.blueline}></div>
             {user.role===0&&<MenuAdmin user={user}/>}
             {user.role===1&&<MenuGerente user={user}/>}
-            {user.role===2&&<MenuFuncionario/>}
+            {user.role===2&&<MenuFuncionario user={user}/>}
         </div>
      </div>
   )

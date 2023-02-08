@@ -107,29 +107,14 @@ updateUser: async (id,name,phone,doc,address,role) => {
     //const json = await req.json();
     return response;
 },
-// Rotas das Imagens ========================================================
-getImagensByServico: async (idServico) => {
-    const req = await fetch(`${BASE_API}/imagens/${idServico}`);
-    const json = await req.json();
-    return json;
-  },
-  addImagem: async (fd) => {
-    const response = await fetch(`${BASE_API}/imagens`, {
+updateAvatar: async (id,fd) => {
+    const response = await fetch(`${BASE_API}/users/${id}`, {
         method: 'POST',
         body: fd
+               
     });
     return response;
 },
-deleteImagem: async (id) => {
-    const response = await fetch(`${BASE_API}/imagens/delete/${id}`,
-    {method: 'POST',
-        headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json'
-        },
-   });
-    //const json = await req.json();
-    return response;
-},
-// Rotas dos Horarios ========================================================
-};
+
+}
+

@@ -47,7 +47,7 @@ const onSalvar = async () => {
           
           navigate("/empresa/users", {state:{user: user,empresa: user.empresa}});
       } else {
-        alert(response.status);
+       
         alert("Falha ao cadastrar usuário.");
       }
   

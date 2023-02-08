@@ -11,8 +11,7 @@ const ViewUser = ({setLogged}) => {
     const params = useLocation();
     let user = params.state.user;
     let userView = params.state.userView;
-    console.log(user.role);
-
+   
     const onLogout = () => {
         setLogged(false);
         navigate('/');

@@ -11,12 +11,16 @@ import UsersEmpresa from "./pages/usersEmpresa/UsersEmpresa";
 import DetUser from "./pages/detUser/DetUser";
 import ViewUser from "./pages/viewUser/ViewUser";
 import Avatar from "./pages/avatar/Avatar";
+import { DataProvider } from "./context/DataContext";
+import { useContext } from "react";
+import DataContext from "./context/DataContext";
 
 
 function App() {
   const [logged,setLogged] = useState(false);
   return (
     <div className="app">
+      <DataProvider>
        <BrowserRouter>
            <Routes>
               <Route path="/" element={<Login setLogged={setLogged}/>} />
@@ -31,6 +35,7 @@ function App() {
               </Route>
           </Routes>
        </BrowserRouter>
+       </DataProvider>
   </div>
   );
 }
