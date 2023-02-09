@@ -5,7 +5,7 @@ const DataContext = createContext({});
 
 export const DataProvider = ({children}) => {
     const [logged,setLogged] = useState(false);
-
+    const [loggedUser,setLoggedUser] = useState(null);
 
 
 
@@ -13,7 +13,9 @@ export const DataProvider = ({children}) => {
   return (
       <DataContext.Provider value={{
         logged,
-        setLogged
+        setLogged,
+        loggedUser,
+        setLoggedUser
        /*
         produtos,
         produtosBackup,

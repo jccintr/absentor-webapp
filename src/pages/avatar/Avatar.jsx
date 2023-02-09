@@ -8,13 +8,13 @@ import DataContext from '../../context/DataContext';
 
 
 const Avatar = () => {
-  const {setLogged} = useContext(DataContext);
+  const {setLogged,loggedUser} = useContext(DataContext);
   const imgRef = useRef();
   const [novoAvatar,setNovoAvatar] = useState(null);
   const navigate = useNavigate();
-  const params = useLocation();
-  let user = params.state.user;
-  let userAvatar = params.state.userAvatar;
+ // const params = useLocation();
+ // let user = params.state.user;
+//  let userAvatar = params.state.userAvatar;
 
  
   const onLogout = () => {
@@ -25,10 +25,12 @@ const Avatar = () => {
   const onSalvar = async () => {
     const fd = new FormData();
       fd.append('avatar',novoAvatar);
-      let response = await Api.updateAvatar(userAvatar.id,fd);
+      let response = await Api.updateAvatar(loggedUser.id,fd);
   
       if(response.status===200){
         console.log('alterou');
+        let json = await response.json();
+        loggedUser.avatar = json.avatar;
         navigate(-1);
       } else {
         alert('Falha ao trocar avatar.');
@@ -42,13 +44,7 @@ const Avatar = () => {
       imgRef.current.src = URL.createObjectURL(e.target.files[0]);
       
       setNovoAvatar(e.target.files[0]);
-    //  const fd = new FormData();
-   //   fd.append('avatar',e.target.files[0]);
-  //    let response = await Api.updateAvatar(userAvatar.id,fd);
-  
-  //    if(response.status===200){
-   //     console.log('alterou');
-  //    }
+   
    }
  
   
@@ -59,15 +55,15 @@ const Avatar = () => {
   return (
     <div className={styles.container}>
     
-    <Header onLogout={onLogout} userRole={user.role} showBackButton={true}/>
+    <Header onLogout={onLogout} showBackButton={true}/>
     
     <div className={styles.body}>
         <h4>Avatar Atual</h4>
         <div className={styles.blueline}></div>
-        {userAvatar.avatar===null?<RxAvatar className={styles.avatar_icone} size={100}/>:<img className={styles.avatar}  src={`${Api.base_storage}/${userAvatar.avatar}`} alt={userAvatar.name} />}
+        {loggedUser.avatar===null?<RxAvatar className={styles.avatar_icone} size={100}/>:<img className={styles.avatar}  src={`${Api.base_storage}/${loggedUser.avatar}`} alt={loggedUser.name} />}
         <h4>Selecione o novo avatar</h4>
         <input className={styles.input} type="file"  id="imagem" name="imagem" onChange={handlerImagem}/>
-        <img className={styles.avatar}   ref={imgRef} alt={userAvatar.name} />
+        <img className={styles.avatar}   ref={imgRef} alt={loggedUser.name} />
         <button onClick={onSalvar} className={styles.botaoSalvar}>Salvar</button>
        
     </div>

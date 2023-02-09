@@ -1,18 +1,28 @@
 import React from 'react'
 import MenuItem from '../menuItem/MenuItem'
 import { useNavigate } from 'react-router-dom';
+import DataContext from '../../context/DataContext';
+import { useContext } from 'react';
 
-const MenuGerente = ({user}) => {
+
+const MenuGerente = () => {
   const navigate = useNavigate();
+  const {loggedUser} = useContext(DataContext);
 
 
   const onFuncionariosClick = () => {
  
    
-    navigate("/empresa/users", {state:{user: user,empresa: user.empresa}});
+    navigate("/empresa/users", {state:{user: loggedUser,empresa: loggedUser.empresa}});
   }
 
+  const onAvatarClick = () => {
+      navigate("/avatar");
+  }
 
+  const onViewClick  =  () => {
+    navigate("/user/view", {state:{user: loggedUser, userView: loggedUser}});
+   }
 
 
 
@@ -21,8 +31,8 @@ const MenuGerente = ({user}) => {
         <MenuItem label="Gerenciar Funcionarios" onClick={onFuncionariosClick}/>
         <MenuItem label="Registrar faltas" onClick={()=>{alert('Ainda não disponível!')}}/>
         <MenuItem label="Consultar faltas" onClick={()=>{alert('Ainda não disponível!')}}/>
-        <MenuItem label="Conferir os seus dados" onClick={()=>{alert('Ainda não disponível!')}}/>
-        <MenuItem label="Alterar seu Avatar" onClick={()=>{alert('Ainda não disponível!')}}/>
+        <MenuItem label="Conferir os seus dados" onClick={onViewClick}/>
+        <MenuItem label="Alterar seu Avatar" onClick={onAvatarClick}/>
     </div>
   )
 }

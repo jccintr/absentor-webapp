@@ -45,7 +45,7 @@ const Empresas = () => {
 
   return (
     <div className={styles.container}>
-        <Header onLogout={onLogout} userRole={user.role} showBackButton={true}/>
+        <Header onLogout={onLogout}  showBackButton={true}/>
         <div className={styles.body}>
             <h4>Empresas</h4>
             <div className={styles.blueline}></div>

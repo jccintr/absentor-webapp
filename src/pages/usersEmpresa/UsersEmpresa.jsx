@@ -54,7 +54,7 @@ const onView  = async (id) => {
 
   return (
     <div className={styles.container}>
-        <Header onLogout={onLogout} userRole={user.role} showBackButton={true}/>
+        <Header onLogout={onLogout}  showBackButton={true}/>
         <div className={styles.body}>
             <h2>{nomeEmpresa}</h2>
             <h4>Funcionários</h4>

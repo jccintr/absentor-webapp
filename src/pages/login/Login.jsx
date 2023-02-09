@@ -12,7 +12,7 @@ const Login = () => {
     const [email,setEmail] = useState('');
     const [password,setPassword] = useState('');
     const navigate = useNavigate();
-    const {setLogged,logged} = useContext(DataContext);
+    const {setLogged,loggedUser,setLoggedUser} = useContext(DataContext);
 
     const onSignIn = async () =>{
      
@@ -21,7 +21,7 @@ const Login = () => {
         
          let jsonUser = await response.json();
          const token = jsonUser.token;
-        
+         setLoggedUser(jsonUser);
          setLogged(true);
         navigate("/main", {state:{user: jsonUser}});
       }

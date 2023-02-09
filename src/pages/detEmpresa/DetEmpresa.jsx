@@ -45,7 +45,7 @@ const DetEmpresa = () => {
   return (
     <div className={styles.container}>
 
-        <Header onLogout={onLogout} userRole={user.role} showBackButton={true}/>
+        <Header onLogout={onLogout}  showBackButton={true}/>
         
         <div className={styles.body}>
             <h4>{editando ? 'Editando ':'Nova '}Empresa</h4>
