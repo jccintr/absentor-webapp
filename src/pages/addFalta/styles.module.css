@@ -1,0 +1,74 @@
+.container {
+    display: flex;
+    flex: 1;
+    background-color: var(--backgroundColor) ;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100vh;
+  }
+  
+  .body {
+    width: 350px;
+    display: flex;
+    flex: 1;
+   flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    
+  }
+  
+  h4 {
+    color: white;
+    margin-bottom: 10px;
+  
+  } 
+  
+  .blueline {
+    background-color: var(--primaryColor);
+    height: 5px;
+    width: 40px;
+    margin-bottom: 20px;
+  }
+
+  .label {
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+  }
+
+ .datePicker {
+    width: 310px;
+    height: 40px;
+    border-radius: 5px;
+    outline: none;
+    padding-left: 10px;
+    font-size: 16px;
+  border: none;
+ }
+  
+  
+  .input {
+    margin-top: 20px;
+    color: white;
+    margin-bottom: 20px;
+    width: 340px;
+  }
+  
+    
+  
+  .botaoSalvar {
+    width: 320px;
+    height: 50px;
+    background-color: var(--primaryColor);
+    border-radius: 5px;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    position: 'absolute';
+    bottom:0;
+    left:0;
+    margin-bottom: 20px;
+    margin-top: 10px;
+  }

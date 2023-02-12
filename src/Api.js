@@ -115,6 +115,18 @@ updateAvatar: async (id,fd) => {
     });
     return response;
 },
+ // endpoints Faltas
+ addFalta: async (empresa_id,funcionario_id,data,dias,motivo) => {
+    const response = await fetch(`${BASE_API}/faltas`, {
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({empresa_id,funcionario_id,data,dias,motivo})
+    });
+    return response;
+   },
 
 }
 

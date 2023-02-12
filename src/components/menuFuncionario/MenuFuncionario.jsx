@@ -16,6 +16,10 @@ const MenuFuncionario = () => {
      navigate("/avatar");
   }
 
+  const onAddFaltaClick = () => {
+    navigate("/addfalta");
+ }
+
   const onViewClick  =  () => {
     navigate("/user/view", {state:{user: loggedUser, userView: loggedUser}});
    }
@@ -23,7 +27,7 @@ const MenuFuncionario = () => {
    
   return (
     <div>
-        <MenuItem label="Registrar uma falta" onClick={()=>{alert('Ainda não disponível!')}}/>
+        <MenuItem label="Registrar uma falta" onClick={onAddFaltaClick}/>
         <MenuItem label="Consultar suas faltas" onClick={()=>{alert('Ainda não disponível!')}}/>
         <MenuItem label="Conferir os seus dados" onClick={onViewClick}/>
         <MenuItem label="Alterar seu Avatar" onClick={onAvatarClick}/>

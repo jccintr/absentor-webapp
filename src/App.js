@@ -11,6 +11,7 @@ import UsersEmpresa from "./pages/usersEmpresa/UsersEmpresa";
 import DetUser from "./pages/detUser/DetUser";
 import ViewUser from "./pages/viewUser/ViewUser";
 import Avatar from "./pages/avatar/Avatar";
+import AddFalta from "./pages/addFalta/AddFalta";
 import { DataProvider } from "./context/DataContext";
 import { useContext } from "react";
 import DataContext from "./context/DataContext";
@@ -32,6 +33,7 @@ function App() {
                       <Route path="/user" element={<DetUser/>}/>
                       <Route path="/user/view" element={<ViewUser/>}/>
                       <Route path="/avatar" element={<Avatar/>}/>
+                      <Route path="/addfalta" element={<AddFalta/>}/>
                   </Route>
               </Routes>
           </BrowserRouter>

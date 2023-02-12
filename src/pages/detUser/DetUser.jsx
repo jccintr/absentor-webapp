@@ -86,7 +86,7 @@ const onSalvar = async () => {
             </div>
             <div className={styles.containerInput}>
               <InputField label="Nome" placeholder="Nome do funcionário" value={name} setValue={setName}/>
-              </div>
+            </div>
               {!editando&&<div className={styles.containerInput}>
               <InputField label="Email" placeholder="Email do funcionário" value={email} setValue={setEmail}/>
             </div>}
