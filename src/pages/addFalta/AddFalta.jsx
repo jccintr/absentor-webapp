@@ -33,8 +33,8 @@ const AddFalta = () => {
             toast.success('Falta registrada com sucesso.');
             navigate("/main", {state:{user: loggedUser}});
         } else {
-          toast.error('erro');
-         // alert("Falha ao cadastrar faltas.");
+          toast.error('Falha ao registrar falta.');
+         
         }
     }  
   return (
@@ -45,6 +45,7 @@ const AddFalta = () => {
     <div className={styles.body}>
         <h4>Registro de Falta</h4>
         <div className={styles.blueline}></div>
+        <p className={styles.userName}>{loggedUser.name}</p>
         <div className={styles.containerInput}>
             <p className={styles.label}>Data da Falta</p>
             <ReactDatePicker  className={styles.datePicker} dateFormat="dd/MM/yyyy" selected={data} onChange={(date)=>setData(date)} />
