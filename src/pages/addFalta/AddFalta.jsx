@@ -7,6 +7,8 @@ import DataContext from '../../context/DataContext';
 import ReactDatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css"
 import InputField from '../../components/inputField/InputField';
+import {toast} from 'react-toastify';
+
 
 const AddFalta = () => {
     const {setLogged,loggedUser} = useContext(DataContext);
@@ -28,10 +30,11 @@ const AddFalta = () => {
         
         let response = await Api.addFalta(loggedUser.empresa.id,loggedUser.id,data,dias*1,motivo);
         if(response.status===201){
+            toast.success('Falta registrada com sucesso.');
             navigate("/main", {state:{user: loggedUser}});
         } else {
-         
-          alert("Falha ao cadastrar faltas.");
+          toast.error('erro');
+         // alert("Falha ao cadastrar faltas.");
         }
     }  
   return (
@@ -54,7 +57,7 @@ const AddFalta = () => {
         </div>
         <button onClick={onSalvar} className={styles.botaoSalvar}>Salvar</button>
     </div>
-   
+  
 </div>
   )
 }

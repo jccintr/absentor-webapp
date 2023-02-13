@@ -7,6 +7,7 @@ import Api from '../../Api';
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import DataContext from '../../context/DataContext';
+import {toast} from 'react-toastify';
 
 const Login = () => {
     const [email,setEmail] = useState('');
@@ -26,7 +27,8 @@ const Login = () => {
         navigate("/main", {state:{user: jsonUser}});
       }
       else{
-       alert("Nome de usuário ou senha inválidos.");
+        toast.error("Nome de usuário e ou senha inválidos.");
+     //  alert("Nome de usuário ou senha inválidos.");
       }
     
      

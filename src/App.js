@@ -17,6 +17,7 @@ import { useContext } from "react";
 import DataContext from "./context/DataContext";
 
 
+
 function App() {
   const {setLogged,logged} = useContext(DataContext);
   return (
@@ -38,6 +39,7 @@ function App() {
               </Routes>
           </BrowserRouter>
        </DataProvider>
+      
   </div>
   );
 }
