@@ -31,6 +31,19 @@ h4 {
     margin-bottom: 20px;
   }
 
+  .userName {
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+
+.noRecords {
+  color: var(--primaryColor);
+  font-size: 14px;
+}
+
+
   .diaSelecionado {
     color: #f00;
     font-weight: bold;

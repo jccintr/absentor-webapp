@@ -127,6 +127,11 @@ updateAvatar: async (id,fd) => {
     });
     return response;
    },
+   getFaltas: async (idFuncionario,ano,mes) => {
+    const req = await fetch(`${BASE_API}/faltas/${idFuncionario}/${ano}/${mes}`);
+    const json = await req.json();
+    return json;
+},
 
 }
 
