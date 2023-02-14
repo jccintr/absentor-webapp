@@ -1,5 +1,4 @@
 
-import { useState } from "react";
 import './App.css';
 import PrivateRoutes from "./PrivateRoutes";
 import {BrowserRouter,Routes, Route } from "react-router-dom";
@@ -12,6 +11,8 @@ import DetUser from "./pages/detUser/DetUser";
 import ViewUser from "./pages/viewUser/ViewUser";
 import Avatar from "./pages/avatar/Avatar";
 import AddFalta from "./pages/addFalta/AddFalta";
+import Faltas from './pages/faltas/Faltas';
+import SelectFuncionario from './pages/selectFuncionario/SelectFuncionario';
 import { DataProvider } from "./context/DataContext";
 import { useContext } from "react";
 import DataContext from "./context/DataContext";
@@ -35,6 +36,8 @@ function App() {
                       <Route path="/user/view" element={<ViewUser/>}/>
                       <Route path="/avatar" element={<Avatar/>}/>
                       <Route path="/addfalta" element={<AddFalta/>}/>
+                      <Route path="/faltas" element={<Faltas/>}/>
+                      <Route path="/selectfuncionario" element={<SelectFuncionario/>}/>
                   </Route>
               </Routes>
           </BrowserRouter>

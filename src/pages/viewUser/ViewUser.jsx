@@ -52,11 +52,8 @@ const ViewUser = () => {
                     <p className={styles.userDataLabel}>Endereço</p>
                     <p className={styles.userDataText}>{userView.address}</p>
                 </div>
-            
-               
-            </div>
-           
-       </div>
+              </div>
+         </div>
       )
     
     

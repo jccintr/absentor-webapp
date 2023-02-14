@@ -13,11 +13,11 @@ import {toast} from 'react-toastify';
 const AddFalta = () => {
     const {setLogged,loggedUser} = useContext(DataContext);
     const navigate = useNavigate();
-    
+    const params = useLocation();
     const [data,setData] = useState(new Date());
     const [dias,setDias] = useState(1);
     const [motivo,setMotivo] = useState('');
-
+    let funcionario = params.state.funcionario===null?loggedUser:params.state.funcionario;
 
    
     const onLogout = () => {
@@ -26,9 +26,7 @@ const AddFalta = () => {
       }
 
     const onSalvar = async () => {
-      
-        
-        let response = await Api.addFalta(loggedUser.empresa.id,loggedUser.id,data,dias*1,motivo);
+        let response = await Api.addFalta(funcionario.empresa.id,funcionario.id,data,dias*1,motivo);
         if(response.status===201){
             toast.success('Falta registrada com sucesso.');
             navigate("/main", {state:{user: loggedUser}});
@@ -37,6 +35,7 @@ const AddFalta = () => {
          
         }
     }  
+
   return (
     <div className={styles.container}>
     
@@ -45,7 +44,7 @@ const AddFalta = () => {
     <div className={styles.body}>
         <h4>Registro de Falta</h4>
         <div className={styles.blueline}></div>
-        <p className={styles.userName}>{loggedUser.name}</p>
+        <p className={styles.userName}>{funcionario.name}</p>
         <div className={styles.containerInput}>
             <p className={styles.label}>Data da Falta</p>
             <ReactDatePicker  className={styles.datePicker} dateFormat="dd/MM/yyyy" selected={data} onChange={(date)=>setData(date)} />

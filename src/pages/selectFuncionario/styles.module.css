@@ -1,0 +1,36 @@
+.container {
+    display: flex;
+    flex: 1;
+    background-color: var(--backgroundColor);
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100vh;
+}
+
+.body {
+    width: 350px;
+    display: flex;
+   
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+h4 {
+    color: white;
+    margin-bottom: 10px;
+
+} 
+
+ .blueline {
+    background-color: var(--primaryColor);
+    height: 5px;
+    width: 40px;
+    margin-bottom: 20px;
+  }
+
+  .noRecords {
+    color: var(--primaryColor);
+    font-size: 14px;
+}
