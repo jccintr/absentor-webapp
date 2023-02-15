@@ -13,6 +13,7 @@ import Avatar from "./pages/avatar/Avatar";
 import AddFalta from "./pages/addFalta/AddFalta";
 import Faltas from './pages/faltas/Faltas';
 import SelectFuncionario from './pages/selectFuncionario/SelectFuncionario';
+import SelectEmpresa from './pages/selectEmpresa/SelectEmpresa';
 import { DataProvider } from "./context/DataContext";
 import { useContext } from "react";
 import DataContext from "./context/DataContext";
@@ -38,6 +39,7 @@ function App() {
                       <Route path="/addfalta" element={<AddFalta/>}/>
                       <Route path="/faltas" element={<Faltas/>}/>
                       <Route path="/selectfuncionario" element={<SelectFuncionario/>}/>
+                      <Route path="/selectempresa" element={<SelectEmpresa/>}/>
                   </Route>
               </Routes>
           </BrowserRouter>

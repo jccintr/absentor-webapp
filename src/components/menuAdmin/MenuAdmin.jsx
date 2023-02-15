@@ -14,27 +14,27 @@ const onEmpresasClick = () => {
   navigate("/empresas", {state:{user: loggedUser}});
 }
 
-const onFuncionariosClick = () => {
- 
-  navigate("/users", {state:{user: loggedUser}});
-}
+
 
 const onAvatarClick = () => {
   navigate("/avatar");
 }
 
+const onViewClick  =  () => {
+  navigate("/user/view", {state:{user: loggedUser, userView: loggedUser}});
+ }
 
+const onConsultarFaltasClick = () => {
+  navigate("/selectempresa");
+}
 
   return (
     <div>
         <MenuItem label="Gerenciar Empresas" onClick={onEmpresasClick}/>
-        <MenuItem label="Gerenciar Funcionarios" onClick={onFuncionariosClick}/>
         <MenuItem label="Registrar faltas" onClick={()=>{alert('Ainda não disponível!')}}/>
-        <MenuItem label="Consultar faltas" onClick={()=>{alert('Ainda não disponível!')}}/>
-        <MenuItem label="Conferir os seus dados" onClick={()=>{alert('Ainda não disponível!')}}/>
+        <MenuItem label="Consultar faltas" onClick={onConsultarFaltasClick}/>
+        <MenuItem label="Conferir os seus dados" onClick={onViewClick}/>
         <MenuItem label="Alterar seu Avatar" onClick={onAvatarClick}/>
-
-
     </div>
   )
 }

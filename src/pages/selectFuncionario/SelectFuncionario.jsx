@@ -16,6 +16,7 @@ const SelectFuncionario = () => {
  
   let idEmpresa = params.state.empresa.id;
   let nomeEmpresa = params.state.empresa.nome;
+  let action = params.state.action;
 
   useEffect(()=>{
     const getUsersEmpresa = async () =>{
@@ -38,22 +39,26 @@ const SelectFuncionario = () => {
 
   const onFuncionarioClick = async (id) => {
     let funcionario = await Api.getUser(id);
-    navigate("/addfalta",{state:{funcionario: funcionario}});
+    if (action==='AddFalta'){
+      navigate("/addfalta",{state:{funcionario: funcionario}});
+    }
+    if (action==='ConsultarFalta'){
+      navigate("/faltas",{state:{funcionario: funcionario}});
+    }
   }
 
 
   return (
     <div className={styles.container}>
-    <Header onLogout={onLogout}  showBackButton={true}/>
-    <div className={styles.body}>
-        <h2>{nomeEmpresa}</h2>
-        <h4>Selecione um funcionário</h4>
-        <div className={styles.blueline}></div>
-        {users.length===0&&<h5 className={styles.noRecords}>Esta empresa ainda não tem funcionários.</h5>}
-        <TableFuncionarios funcionarios={users} onFuncionarioClick={onFuncionarioClick}/> 
+        <Header onLogout={onLogout}  showBackButton={true}/>
+        <div className={styles.body}>
+            <h2>{nomeEmpresa}</h2>
+            <h4>Selecione um funcionário</h4>
+            <div className={styles.blueline}></div>
+            {users.length===0&&<h5 className={styles.noRecords}>Esta empresa ainda não tem funcionários.</h5>}
+            <TableFuncionarios funcionarios={users} onFuncionarioClick={onFuncionarioClick}/> 
+        </div>
     </div>
-    
-</div>
   )
 }
 

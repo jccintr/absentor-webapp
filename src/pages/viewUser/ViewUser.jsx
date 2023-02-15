@@ -32,10 +32,10 @@ const ViewUser = () => {
                 <div className={styles.blueline}></div>
                 {userView.avatar===null?<RxAvatar className={styles.avatar_icone} size={100}/>:<img className={styles.avatar}  src={`${Api.base_storage}/${userView.avatar}`} alt={userView.name} />}
                 <p className={styles.userName}>{userView.name}</p>
-                <div className={styles.userDataArea}>
+                {userView.empresa!=null?<div className={styles.userDataArea}>
                     <p className={styles.userDataLabel}>Cargo</p>
                     <p className={styles.userDataText}>{`${cargos[userView.role]} na ${userView.empresa.nome}`}</p>
-                </div>
+                </div>:''}
                 <div className={styles.userDataArea}>
                     <p className={styles.userDataLabel}>Email</p>
                     <p className={styles.userDataText}>{userView.email}</p>

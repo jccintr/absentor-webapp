@@ -26,7 +26,7 @@ const MenuFuncionario = () => {
    }
 
    const onConsultarFaltasClick = () => {
-    navigate("/faltas");
+    navigate("/faltas",{state:{funcionario: null}});
    }
 
    

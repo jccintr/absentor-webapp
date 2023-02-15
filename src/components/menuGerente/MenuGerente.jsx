@@ -24,8 +24,13 @@ const MenuGerente = () => {
     navigate("/user/view", {state:{user: loggedUser, userView: loggedUser}});
    }
 
-   const onRegistrarFaltasClick  =  () => {
-    navigate("/selectfuncionario", {state:{empresa: loggedUser.empresa}});
+   
+   const onAddFaltaClick  =  () => {
+    navigate("/selectfuncionario", {state:{empresa: loggedUser.empresa, action: 'AddFalta'}});
+   }
+
+   const onConsultarFaltasClick = () => {
+    navigate("/selectfuncionario",{state:{empresa: loggedUser.empresa,action: 'ConsultarFalta'}});
    }
 
 
@@ -33,8 +38,8 @@ const MenuGerente = () => {
   return (
     <div>
         <MenuItem label="Gerenciar Funcionarios" onClick={onFuncionariosClick}/>
-        <MenuItem label="Registrar faltas" onClick={onRegistrarFaltasClick}/>
-        <MenuItem label="Consultar faltas" onClick={()=>{alert('Ainda não disponível!')}}/>
+        <MenuItem label="Registrar faltas" onClick={onAddFaltaClick}/>
+        <MenuItem label="Consultar faltas" onClick={onConsultarFaltasClick}/>
         <MenuItem label="Conferir os seus dados" onClick={onViewClick}/>
         <MenuItem label="Alterar seu Avatar" onClick={onAvatarClick}/>
     </div>

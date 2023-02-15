@@ -12,33 +12,28 @@ const Faltas = () => {
     const {setLogged,loggedUser} = useContext(DataContext);
     const [faltas,setfaltas] = useState([]);
     const [data,setData] = useState(new Date());
-  
     const navigate = useNavigate();
     const params = useLocation();
-   // let user = params.state.user;
-   // let userView = params.state.userView;
- //  let funcionario = params.state.funcionario===null?loggedUser:params.state.funcionario;
+    let funcionario = params.state.funcionario===null?loggedUser:params.state.funcionario;
 
 
-   useEffect(()=>{
+    const getFaltas = async () => {
+      let json = await Api.getFaltas(funcionario.id,data.getFullYear(),data.getMonth()+1);
+      setfaltas(json);
+    };
+
+
+
+  useEffect(()=>{
     getFaltas();
-  
-},[]);
-
-
-
+ },[]);
 
  useEffect(()=>{
- 
-  getFaltas();
-  
-},[data]);
+   getFaltas();
+  },[data]);
 
 
-const getFaltas = async () => {
-  let json = await Api.getFaltas(loggedUser.id,data.getFullYear(),data.getMonth()+1);
-  setfaltas(json);
-};
+
 
 
 
@@ -54,7 +49,7 @@ const getFaltas = async () => {
         <div className={styles.body}>
             <h4>Faltas do Funcionário</h4>
             <div className={styles.blueline}></div>
-            <p className={styles.userName}>{loggedUser.name}</p>
+            <p className={styles.userName}>{funcionario.name}</p>
             <ReactDatePicker 
                inline 
                dateFormat="MM/yyyy" 
