@@ -9,6 +9,18 @@ import "react-datepicker/dist/react-datepicker.css"
 import InputField from '../../components/inputField/InputField';
 import {toast} from 'react-toastify';
 
+const days = ['Dom','Seg','Ter','Qua','Qui','Sex','Sab'];
+const months = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+
+const locale = {
+  localize : {
+    day: n => days[n],
+    month: n => months[n]
+  },
+  formatLong: {
+    date: () => 'dd/mm/yyyy'
+  }
+}
 
 const AddFalta = () => {
     const {setLogged,loggedUser} = useContext(DataContext);
@@ -47,7 +59,7 @@ const AddFalta = () => {
         <p className={styles.userName}>{funcionario.name}</p>
         <div className={styles.containerInput}>
             <p className={styles.label}>Data da Falta</p>
-            <ReactDatePicker  className={styles.datePicker} dateFormat="dd/MM/yyyy" selected={data} onChange={(date)=>setData(date)} />
+            <ReactDatePicker  locale={locale} className={styles.datePicker} dateFormat="dd/MM/yyyy" selected={data} onChange={(date)=>setData(date)} />
         </div>
         <div className={styles.containerInput}>
               <InputField label="Duração em dias" placeholder="Duração da falta" value={dias} setValue={setDias}/>

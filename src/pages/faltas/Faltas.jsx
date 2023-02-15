@@ -8,6 +8,19 @@ import ReactDatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css"
 import TableFaltas from '../../components/tableFaltas/TableFaltas';
 
+const days = ['Dom','Seg','Ter','Qua','Qui','Sex','Sab'];
+const months = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+
+const locale = {
+  localize : {
+    day: n => days[n],
+    month: n => months[n]
+  },
+  formatLong: {
+    date: () => 'dd/mm/yyyy'
+  }
+}
+
 const Faltas = () => {
     const {setLogged,loggedUser} = useContext(DataContext);
     const [faltas,setfaltas] = useState([]);
@@ -33,14 +46,10 @@ const Faltas = () => {
   },[data]);
 
 
-
-
-
-
-    const onLogout = () => {
+const onLogout = () => {
         setLogged(false);
         navigate('/');
-      }
+}
 
 
   return (
@@ -51,6 +60,7 @@ const Faltas = () => {
             <div className={styles.blueline}></div>
             <p className={styles.userName}>{funcionario.name}</p>
             <ReactDatePicker 
+               locale={locale}
                inline 
                dateFormat="MM/yyyy" 
                selected={data} 
