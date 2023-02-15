@@ -12,7 +12,7 @@ const SelectEmpresa = () => {
     const {setLogged} = useContext(DataContext);
     const navigate = useNavigate();
     const params = useLocation();
-
+    const action =  params.state.action;
 
     useEffect(()=>{
       const getEmpresas = async () =>{
@@ -30,8 +30,10 @@ const SelectEmpresa = () => {
         navigate('/');
       }
 
-      const onEmpresaClick = async (id) => {
-
+      const onEmpresaClick = async (empresa) => {
+       
+          navigate("/selectfuncionario",{state:{empresa: empresa,action: action}});
+       
       }
 
   return (

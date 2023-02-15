@@ -25,13 +25,17 @@ const onViewClick  =  () => {
  }
 
 const onConsultarFaltasClick = () => {
-  navigate("/selectempresa");
+  navigate("/selectempresa",  {state:{ action: 'ConsultarFalta'}});
+}
+
+const onAddFaltaClick = () => {
+  navigate("/selectempresa",  {state:{ action: 'AddFalta'}});
 }
 
   return (
     <div>
         <MenuItem label="Gerenciar Empresas" onClick={onEmpresasClick}/>
-        <MenuItem label="Registrar faltas" onClick={()=>{alert('Ainda não disponível!')}}/>
+        <MenuItem label="Registrar faltas" onClick={onAddFaltaClick}/>
         <MenuItem label="Consultar faltas" onClick={onConsultarFaltasClick}/>
         <MenuItem label="Conferir os seus dados" onClick={onViewClick}/>
         <MenuItem label="Alterar seu Avatar" onClick={onAvatarClick}/>

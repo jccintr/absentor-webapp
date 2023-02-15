@@ -6,7 +6,7 @@ const TableEmpresas2 = ({empresas,onEmpresaClick}) => {
   return (
     <>
     {empresas.map((empresa) => ( 
-        <div key={empresa.id} className={styles.container}  onClick={()=>onEmpresaClick(empresa.id)} >
+        <div key={empresa.id} className={styles.container}  onClick={()=>onEmpresaClick(empresa)} >
             <p className={styles.label}>{empresa.nome}</p>
             <div>
               <FaAngleRight className={styles.icon} size={18}/>    
