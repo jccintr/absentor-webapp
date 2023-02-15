@@ -8,15 +8,17 @@ import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import DataContext from '../../context/DataContext';
 import {toast} from 'react-toastify';
+import ReactLoading from 'react-loading';
 
 const Login = () => {
     const [email,setEmail] = useState('');
     const [password,setPassword] = useState('');
     const navigate = useNavigate();
     const {setLogged,loggedUser,setLoggedUser} = useContext(DataContext);
+    const [isLoading,setIsLoading] = useState(false);
 
     const onSignIn = async () =>{
-     
+      setIsLoading(true);
       let response = await Api.signIn(email,password);
       if(response.status===200){
         
@@ -24,11 +26,12 @@ const Login = () => {
          const token = jsonUser.token;
          setLoggedUser(jsonUser);
          setLogged(true);
+         setIsLoading(false);
         navigate("/main", {state:{user: jsonUser}});
       }
       else{
         toast.error("Nome de usuário e ou senha inválidos.");
-     //  alert("Nome de usuário ou senha inválidos.");
+        setIsLoading(false);
       }
     
      
@@ -62,7 +65,7 @@ const Login = () => {
           />
         </div>
 
-        <button onClick={onSignIn} className={styles.botao}>Entrar</button>
+        <button onClick={onSignIn} className={styles.botao}>{!isLoading?'Entrar':<ReactLoading type="bars" color="#000" height={30} width={30}/>}</button>
     </div>
   )
 }

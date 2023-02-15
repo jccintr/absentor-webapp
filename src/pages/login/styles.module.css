@@ -56,5 +56,8 @@
     border: 0;
     margin: 0;
     padding: 0;
+    display: flex;
     font-weight: bold;
+    align-items: center;
+    justify-content: center;
 }
