@@ -1,4 +1,4 @@
-import React, {useRef,useState,useContext} from 'react'
+import React, {useState,useContext} from 'react'
 import { useLocation,useNavigate } from 'react-router-dom';
 import Api from '../../Api';
 import Header from '../../components/header/Header';
@@ -29,6 +29,7 @@ const AddFalta = () => {
     const [data,setData] = useState(new Date());
     const [dias,setDias] = useState(1);
     const [motivo,setMotivo] = useState('');
+    const [anexo,setAnexo] = useState(null)
     let funcionario = params.state.funcionario===null?loggedUser:params.state.funcionario;
 
    
@@ -38,7 +39,17 @@ const AddFalta = () => {
       }
 
     const onSalvar = async () => {
-        let response = await Api.addFalta(funcionario.empresa.id,funcionario.id,data,dias*1,motivo);
+      const fd = new FormData();
+      fd.append('empresa_id',funcionario.empresa.id);
+      fd.append('funcionario_id',funcionario.id);
+      fd.append('data',data);
+      fd.append('dias',dias*1);
+      fd.append('motivo',motivo);
+      if(anexo!=null){
+        fd.append('anexo',anexo);
+      }
+        //let response = await Api.addFalta(funcionario.empresa.id,funcionario.id,data,dias*1,motivo);
+        let response = await Api.addFalta2(fd);
         if(response.status===201){
             toast.success('Falta registrada com sucesso.');
             navigate("/main", {state:{user: loggedUser}});
@@ -47,6 +58,13 @@ const AddFalta = () => {
          
         }
     }  
+
+    const handlerAnexo = async (e) => {
+      if(e.target.files[0]){
+        setAnexo(e.target.files[0]);
+      }
+   
+    }
 
   return (
     <div className={styles.container}>
@@ -67,6 +85,8 @@ const AddFalta = () => {
         <div className={styles.containerInput}>
               <InputField label="Motivo da falta" placeholder="Motivo da falta" value={motivo} setValue={setMotivo}/>
         </div>
+        <h4>Anexar documento</h4>
+        <input className={styles.input} type="file"  id="anexo" name="anexo" onChange={handlerAnexo}/>
         <button onClick={onSalvar} className={styles.botaoSalvar}>Salvar</button>
     </div>
   
