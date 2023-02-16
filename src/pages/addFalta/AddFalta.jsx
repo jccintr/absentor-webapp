@@ -18,7 +18,7 @@ const locale = {
     month: n => months[n]
   },
   formatLong: {
-    date: () => 'dd/mm/yyyy'
+    date: () => 'dd/MM/yyyy'
   }
 }
 
@@ -39,12 +39,16 @@ const AddFalta = () => {
       }
 
     const onSalvar = async () => {
+      
       const fd = new FormData();
+      let d = data.getFullYear()+'-'+(data.getMonth()+1)+'-'+data.getDate();
+      console.log(d);
       fd.append('empresa_id',funcionario.empresa.id);
       fd.append('funcionario_id',funcionario.id);
-      fd.append('data',data);
+      fd.append('data',d);
       fd.append('dias',dias*1);
       fd.append('motivo',motivo);
+      
       if(anexo!=null){
         fd.append('anexo',anexo);
       }
