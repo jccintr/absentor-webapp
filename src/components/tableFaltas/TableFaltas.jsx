@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from "./styles.module.css";
 import { FaPaperclip } from "react-icons/fa";
+import Api from '../../Api';
 
 
 const TableFaltas = ({faltas}) => {
@@ -18,7 +19,7 @@ const TableFaltas = ({faltas}) => {
                     <p className={styles.label}>{falta.motivo}</p>
                 </div>
                
-                {falta.anexo!==null&&<FaPaperclip className={styles.icon} size={18}/>}  
+                {falta.anexo!==null&& <a href={`${Api.base_storage}/${falta.anexo}`} target="_blank"><FaPaperclip className={styles.icon} size={18}/></a> }  
                 
             </div>
               ))}
