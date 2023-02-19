@@ -5,6 +5,8 @@ import Header from '../../components/header/Header';
 import InputField from '../../components/inputField/InputField';
 import styles from "./styles.module.css";
 import DataContext from '../../context/DataContext';
+import {toast} from 'react-toastify';
+import ReactLoading from 'react-loading';
 
 const DetUser = () => {
   const {setLogged} = useContext(DataContext);
@@ -18,6 +20,7 @@ const DetUser = () => {
   const [doc,setDoc] = useState(params.state.userEdit===null?'':params.state.userEdit.doc);
   const [address,setAddress] = useState(params.state.userEdit===null?'':params.state.userEdit.address);
   const [role,setRole] =useState(params.state.userEdit===null?'':params.state.userEdit.role);
+  const [isLoading,setIsLoading] = useState(false);
   
   let editando = params.state.editando;
   let empresa_id = 0
@@ -42,28 +45,28 @@ const DetUser = () => {
 const onSalvar = async () => {
    
  
-   
+    setIsLoading(true);  
     if (!editando) {
       let response = await Api.signUp(name,email,role,password,phone,doc,address,empresa_id);
       if(response.status===201){
-          
+        toast.success('Usuário cadastrado com sucesso.');
           navigate("/empresa/users", {state:{user: user,empresa: user.empresa}});
       } else {
-       
-        alert("Falha ao cadastrar usuário.");
+        toast.error("Falha ao cadastrar usuário.");
       }
   
   } else {
 
    let response = await Api.updateUser(idUser,name,phone,doc,address,role)
    if(response.status===200){
+       toast.success('Usuário alterado com sucesso.');
        navigate("/empresa/users", {state:{user: user, empresa: params.state.userEdit.empresa}});
     }else {
-      alert("Falha ao alterar empresa.");
+      toast.error("Falha ao alterar usuário.");
     }
 
   }
-
+   setIsLoading(false);
 
 }
 
@@ -104,7 +107,7 @@ const onSalvar = async () => {
             </div>
             
 
-            <button onClick={onSalvar} className={styles.botaoSalvar}>Salvar</button>
+            <button onClick={onSalvar} className={styles.botaoSalvar}>{!isLoading?'Salvar':<ReactLoading type="bars" color="#000" height={30} width={30}/>}</button>
         </div>
        
    </div>

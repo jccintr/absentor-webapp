@@ -27,7 +27,6 @@ const onSalvar = async () => {
       toast.success('Senha alterada com sucesso.');
       navigate(-1);
     }else {
-      console.log(response.status);
       toast.error("Falha ao alterar senha.");
     }
     setIsLoading(false);

@@ -5,6 +5,8 @@ import Header from '../../components/header/Header';
 import InputField from '../../components/inputField/InputField';
 import styles from "./styles.module.css";
 import DataContext from '../../context/DataContext';
+import {toast} from 'react-toastify';
+import ReactLoading from 'react-loading';
 
 
 const DetEmpresa = () => {
@@ -13,6 +15,7 @@ const DetEmpresa = () => {
     const {setLogged} = useContext(DataContext);
     const [nome,setNome] = useState(params.state.empresa===null?'':params.state.empresa.nome);
     const [idEmpresa,setIdEmpresa] =  useState(params.state.empresa===null?'':params.state.empresa.id);//useState(params.state.empresa.id);
+    const [isLoading,setIsLoading] = useState(false);
     let user = params.state.user;
     let editando = params.state.editando;
     
@@ -23,23 +26,26 @@ const DetEmpresa = () => {
       }
 
     const onSalvar = async () => {
-
+        setIsLoading(true);
         if (!editando) {
             let response = await Api.addEmpresa(nome);
             if(response.status===201){
+                toast.success('Empresa cadastrada com sucesso.');
                 navigate("/empresas", {state:{user: user}});
             } else {
-              alert("Falha ao inserir empresa.");
+              toast.error("Falha ao cadastrar empresa.");
             }
         
         } else {
           let response = await Api.updateEmpresa(idEmpresa,nome)
           if(response.status===200){
+            toast.success('Empresa alterada com sucesso.');
              navigate("/empresas", {state:{user: user}});
           }else {
-            alert("Falha ao alterar empresa.");
+            toast.error("Falha ao alterar empresa.");
           }
         }
+        setIsLoading(false);
     }
 
   return (
@@ -54,7 +60,7 @@ const DetEmpresa = () => {
             <div className={styles.containerInput}>
               <InputField label="Nome" placeholder="Nome da empresa" value={nome} setValue={setNome}/>
             </div>
-            <button onClick={onSalvar} className={styles.botaoSalvar}>Salvar</button>
+            <button onClick={onSalvar} className={styles.botaoSalvar}>{!isLoading?'Salvar':<ReactLoading type="bars" color="#000" height={30} width={30}/>}</button>
         </div>
        
    </div>
