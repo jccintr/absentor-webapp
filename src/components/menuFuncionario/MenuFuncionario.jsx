@@ -29,13 +29,19 @@ const MenuFuncionario = () => {
     navigate("/faltas",{state:{funcionario: null}});
    }
 
+   const onSenhaClick = () => {
+    navigate('/senha');
+   }
+
+
    
   return (
     <div>
         <MenuItem label="Registrar uma falta" onClick={onAddFaltaClick}/>
         <MenuItem label="Consultar suas faltas" onClick={onConsultarFaltasClick}/>
         <MenuItem label="Conferir os seus dados" onClick={onViewClick}/>
-        <MenuItem label="Alterar seu Avatar" onClick={onAvatarClick}/>
+        <MenuItem label="Alterar seu avatar" onClick={onAvatarClick}/>
+        <MenuItem label="Alterar sua senha" onClick={onSenhaClick}/>
     </div>
   )
 }

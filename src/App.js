@@ -14,6 +14,7 @@ import AddFalta from "./pages/addFalta/AddFalta";
 import Faltas from './pages/faltas/Faltas';
 import SelectFuncionario from './pages/selectFuncionario/SelectFuncionario';
 import SelectEmpresa from './pages/selectEmpresa/SelectEmpresa';
+import Senha from './pages/Senha/Senha';
 import { DataProvider } from "./context/DataContext";
 import { useContext } from "react";
 import DataContext from "./context/DataContext";
@@ -40,6 +41,7 @@ function App() {
                       <Route path="/faltas" element={<Faltas/>}/>
                       <Route path="/selectfuncionario" element={<SelectFuncionario/>}/>
                       <Route path="/selectempresa" element={<SelectEmpresa/>}/>
+                      <Route path="/senha" element={<Senha/>}/>
                   </Route>
               </Routes>
           </BrowserRouter>

@@ -32,13 +32,18 @@ const onAddFaltaClick = () => {
   navigate("/selectempresa",  {state:{ action: 'AddFalta'}});
 }
 
+const onSenhaClick = () => {
+  navigate('/senha');
+ }
+
   return (
     <div>
-        <MenuItem label="Gerenciar Empresas" onClick={onEmpresasClick}/>
+        <MenuItem label="Gerenciar empresas" onClick={onEmpresasClick}/>
         <MenuItem label="Registrar faltas" onClick={onAddFaltaClick}/>
         <MenuItem label="Consultar faltas" onClick={onConsultarFaltasClick}/>
         <MenuItem label="Conferir os seus dados" onClick={onViewClick}/>
-        <MenuItem label="Alterar seu Avatar" onClick={onAvatarClick}/>
+        <MenuItem label="Alterar seu avatar" onClick={onAvatarClick}/>
+        <MenuItem label="Alterar sua senhar" onClick={onSenhaClick}/>
     </div>
   )
 }

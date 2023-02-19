@@ -116,6 +116,18 @@ updateAvatar: async (id,fd) => {
     });
     return response;
 },
+updatePassword: async (id,senha,novaSenha) => {
+    const response = await fetch(`${BASE_API}/users/password/${id}`, {
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({senha,novaSenha})
+    });
+    return response;
+   
+},
  // endpoints Faltas
  addFalta: async (empresa_id,funcionario_id,data,dias,motivo) => {
     const response = await fetch(`${BASE_API}/faltas`, {

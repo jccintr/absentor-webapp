@@ -33,15 +33,19 @@ const MenuGerente = () => {
     navigate("/selectfuncionario",{state:{empresa: loggedUser.empresa,action: 'ConsultarFalta'}});
    }
 
+   const onSenhaClick = () => {
+    navigate('/senha');
+   }
 
 
   return (
     <div>
-        <MenuItem label="Gerenciar Funcionarios" onClick={onFuncionariosClick}/>
+        <MenuItem label="Gerenciar funcionarios" onClick={onFuncionariosClick}/>
         <MenuItem label="Registrar faltas" onClick={onAddFaltaClick}/>
         <MenuItem label="Consultar faltas" onClick={onConsultarFaltasClick}/>
         <MenuItem label="Conferir os seus dados" onClick={onViewClick}/>
-        <MenuItem label="Alterar seu Avatar" onClick={onAvatarClick}/>
+        <MenuItem label="Alterar seu avatar" onClick={onAvatarClick}/>
+        <MenuItem label="Alterar sua senhar" onClick={onSenhaClick}/>
     </div>
   )
 }

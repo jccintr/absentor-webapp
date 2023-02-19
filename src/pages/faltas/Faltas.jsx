@@ -71,7 +71,7 @@ const onLogout = () => {
               <h5 className={styles.noRecords}>{faltas.length===0?'Faltas não encontradas.':faltas.length > 1 ?faltas.length + ' faltas encontradas.': faltas.length + ' falta encontrada.'}</h5>
              <TableFaltas faltas={faltas} />
         </div>
- </div>
+     </div>
   )
 }
 

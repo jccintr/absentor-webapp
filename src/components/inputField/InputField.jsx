@@ -7,7 +7,7 @@ const InputField = ({label,placeholder, value, setValue}) => {
         <p className={styles.label}>{label}</p>
          <div className={styles.containerInput}>
             <input
-                className={styles.inputPesquisa}
+                className={styles.inputField}
                 placeholder={placeholder}
                 type="text"
                 onChange={(e)=>setValue(e.target.value)}
