@@ -43,7 +43,7 @@ const onSenhaClick = () => {
         <MenuItem label="Consultar faltas" onClick={onConsultarFaltasClick}/>
         <MenuItem label="Conferir os seus dados" onClick={onViewClick}/>
         <MenuItem label="Alterar seu avatar" onClick={onAvatarClick}/>
-        <MenuItem label="Alterar sua senhar" onClick={onSenhaClick}/>
+        <MenuItem label="Alterar sua senha" onClick={onSenhaClick}/>
     </div>
   )
 }

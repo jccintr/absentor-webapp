@@ -1,14 +1,17 @@
 import React, {useRef,useState,useContext} from 'react'
-import { useLocation,useNavigate } from 'react-router-dom';
+import {useNavigate } from 'react-router-dom';
 import Api from '../../Api';
 import Header from '../../components/header/Header';
 import styles from "./styles.module.css";
 import { RxAvatar } from "react-icons/rx";
 import DataContext from '../../context/DataContext';
+import {toast} from 'react-toastify';
+import ReactLoading from 'react-loading';
 
 
 const Avatar = () => {
   const {setLogged,loggedUser} = useContext(DataContext);
+  const [isLoading,setIsLoading] = useState(false);
   const imgRef = useRef();
   const [novoAvatar,setNovoAvatar] = useState(null);
   const navigate = useNavigate();
@@ -23,30 +26,29 @@ const Avatar = () => {
   }
 
   const onSalvar = async () => {
+    setIsLoading(true);
     const fd = new FormData();
       fd.append('avatar',novoAvatar);
       let response = await Api.updateAvatar(loggedUser.id,fd);
   
       if(response.status===200){
-        console.log('alterou');
         let json = await response.json();
         loggedUser.avatar = json.avatar;
+        toast.success('Avatar alterado com sucesso.');
         navigate(-1);
       } else {
-        alert('Falha ao trocar avatar.');
+        toast.error("Falha ao alterar avatar.");
       }
+      setIsLoading(false);
   }
 
   const handlerImagem = async (e) => {
-
-
     if(e.target.files[0]){
       imgRef.current.src = URL.createObjectURL(e.target.files[0]);
       
       setNovoAvatar(e.target.files[0]);
    
    }
- 
   
   }
  
@@ -64,7 +66,7 @@ const Avatar = () => {
         <h4>Selecione o novo avatar</h4>
         <input className={styles.input} type="file"  id="imagem" name="imagem" onChange={handlerImagem}/>
         <img className={styles.avatar}   ref={imgRef} alt={loggedUser.name} />
-        <button onClick={onSalvar} className={styles.botaoSalvar}>Salvar</button>
+        <button onClick={onSalvar} className={styles.botaoSalvar}>{!isLoading?'Salvar':<ReactLoading type="bars" color="#000" height={30} width={30}/>}</button>
        
     </div>
    
