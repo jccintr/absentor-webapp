@@ -57,3 +57,43 @@ h4 {
     align-items: center;
     justify-content: center;
 }
+
+.bloqueado {
+  width: 320px;
+  height: 50px;
+  color: white;
+  background-color: green;
+  border-radius: 5px;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+  position: 'absolute';
+  bottom:0;
+  left:0;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.desbloqueado {
+  width: 320px;
+  height: 50px;
+  color: white;
+  background-color: red;
+  border-radius: 5px;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+  position: 'absolute';
+  bottom:0;
+  left:0;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}

@@ -20,6 +20,7 @@ const DetUser = () => {
   const [doc,setDoc] = useState(params.state.userEdit===null?'':params.state.userEdit.doc);
   const [address,setAddress] = useState(params.state.userEdit===null?'':params.state.userEdit.address);
   const [role,setRole] =useState(params.state.userEdit===null?'':params.state.userEdit.role);
+  const [bloqueado,setBloqueado] = useState(params.state.userEdit===null?'':params.state.userEdit.bloqueado);
   const [isLoading,setIsLoading] = useState(false);
   
   let editando = params.state.editando;
@@ -42,6 +43,10 @@ const DetUser = () => {
     navigate('/');
   }
 
+  const onBloqueadoClick = () => {
+    setBloqueado(!bloqueado);
+  }
+
 const onSalvar = async () => {
    
  
@@ -57,7 +62,7 @@ const onSalvar = async () => {
   
   } else {
 
-   let response = await Api.updateUser(idUser,name,phone,doc,address,role)
+   let response = await Api.updateUser(idUser,name,phone,doc,address,role,bloqueado)
    if(response.status===200){
        toast.success('Usuário alterado com sucesso.');
        navigate("/empresa/users", {state:{user: user, empresa: params.state.userEdit.empresa}});
@@ -105,6 +110,9 @@ const onSalvar = async () => {
             <div className={styles.containerInput}>
               <InputField label="Endereço" placeholder="Endereço do funcionário" value={address} setValue={setAddress}/>
             </div>
+            {editando&&<div className={styles.containerInput}>
+                 <p className={bloqueado?styles.bloqueado:styles.desbloqueado} onClick={onBloqueadoClick}>{bloqueado?'Desbloquear':'Bloquear'}</p>
+            </div>}
             
 
             <button onClick={onSalvar} className={styles.botaoSalvar}>{!isLoading?'Salvar':<ReactLoading type="bars" color="#000" height={30} width={30}/>}</button>
