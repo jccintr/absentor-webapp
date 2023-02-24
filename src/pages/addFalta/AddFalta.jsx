@@ -8,6 +8,7 @@ import ReactDatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css"
 import InputField from '../../components/inputField/InputField';
 import {toast} from 'react-toastify';
+import ReactLoading from 'react-loading';
 
 const days = ['Dom','Seg','Ter','Qua','Qui','Sex','Sab'];
 const months = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
@@ -30,6 +31,7 @@ const AddFalta = () => {
     const [dias,setDias] = useState(1);
     const [motivo,setMotivo] = useState('');
     const [anexo,setAnexo] = useState(null)
+    const [isLoading,setIsLoading] = useState(false);
     let funcionario = params.state.funcionario===null?loggedUser:params.state.funcionario;
 
    
@@ -39,7 +41,7 @@ const AddFalta = () => {
       }
 
     const onSalvar = async () => {
-      
+      setIsLoading(true);
       const fd = new FormData();
       let d = data.getFullYear()+'-'+(data.getMonth()+1)+'-'+data.getDate();
       console.log(d);
@@ -61,13 +63,14 @@ const AddFalta = () => {
           toast.error('Falha ao registrar falta.');
          
         }
+        setIsLoading(false);
     }  
 
     const handlerAnexo = async (e) => {
       if(e.target.files[0]){
         setAnexo(e.target.files[0]);
       }
-   
+     
     }
 
   return (
@@ -91,7 +94,7 @@ const AddFalta = () => {
         </div>
         <h4>Anexar documento</h4>
         <input className={styles.input} type="file"  id="anexo" name="anexo" onChange={handlerAnexo}/>
-        <button onClick={onSalvar} className={styles.botaoSalvar}>Salvar</button>
+        <button onClick={onSalvar} className={styles.botaoSalvar}>{!isLoading?'Salvar':<ReactLoading type="bars" color="#000" height={30} width={30}/>}</button>
     </div>
   
 </div>
