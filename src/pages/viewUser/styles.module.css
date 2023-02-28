@@ -80,6 +80,7 @@ h4 {
   .botaoSalvar {
     width: 320px;
     height: 50px;
+    color: #000;
     background-color: var(--primaryColor);
     border-radius: 5px;
     border: 0;

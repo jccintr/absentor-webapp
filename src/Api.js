@@ -3,14 +3,14 @@
 //const BASE_API = 'http://localhost:8000/api';
 //const BASE_API = 'https://absentor.tripsun.tk/api';
 
-const BASE_API = 'http://absentor-api.devbr.pt/api';
+const BASE_API = 'https://absentor-api.devbr.pt/api';
 //const BASE_API = 'http://192.168.0.107:8000/api';
 //const BASE_API = 'http://177.104.209.216:8000/api';
 
 export default {
  //base_storage: 'http://localhost:8000/storage',
   //base_storage: 'https://absentor.tripsun.tk/storage',
-  base_storage: 'http://absentor-api.devbr.pt/storage',
+  base_storage: 'https://absentor-api.devbr.pt/storage',
  // base_storage: 'http://192.168.0.107:8000/storage',
  // base_storage: 'http://177.104.209.216:8000/storage',
 
