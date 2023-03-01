@@ -31,6 +31,8 @@ const Login = () => {
       }
       else{
         toast.error("Nome de usuário e ou senha inválidos.");
+        setEmail('');
+        setPassword('');
         setIsLoading(false);
       }
     
