@@ -35,9 +35,30 @@ h4 {
     font-weight: bold;
     font-size: 16px;
   }
-  .selectcargo {
-    width: 320px;
-    height: 40px;
+  .containerSelect {
+    
+      display: flex;
+      flex:1;
+      flex-direction: column;
+      
+      width:100%;
+   
+  }
+
+  .containerInput {
+    display: flex;
+    justify-content: center;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+    border: 0.5px solid lightgray;border: none;
+    outline: none;
+    background: transparent;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: white;
+    width: 300px;
+    height: 30px;
   }
 
   .botaoSalvar {

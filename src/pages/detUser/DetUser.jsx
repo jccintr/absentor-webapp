@@ -3,6 +3,7 @@ import { useLocation,useNavigate } from 'react-router-dom';
 import Api from '../../Api';
 import Header from '../../components/header/Header';
 import InputField from '../../components/inputField/InputField';
+import SelectField from '../../components/selectField/SelectField';
 import styles from "./styles.module.css";
 import DataContext from '../../context/DataContext';
 import {toast} from 'react-toastify';
@@ -84,37 +85,39 @@ const onSalvar = async () => {
         <div className={styles.body}>
             <h4>{editando ? 'Editando ':'Novo '}Funcionário</h4>
             <div className={styles.blueline}></div>
-            <div className={styles.containerInput}>
-              <p className={styles.label}>Cargo</p>
-              <select className={styles.selectcargo} value={role} onChange={(e)=>{setRole(e.target.value*1)}}>
-                <option value={0}>Selecione por favor</option>
-                <option value={1}>Gerente</option>
-                <option value={2}>Funcionário</option>
-              </select>
+
+            <div>
+              <SelectField label="Cargo" value={role} setValue={setRole}/>
             </div>
-            <div className={styles.containerInput}>
+
+            <div >
               <InputField label="Nome" placeholder="Nome do funcionário" value={name} setValue={setName}/>
             </div>
-              {!editando&&<div className={styles.containerInput}>
+
+              {!editando&&<div >
               <InputField label="Email" placeholder="Email do funcionário" value={email} setValue={setEmail}/>
             </div>}
-            {!editando&&<div className={styles.containerInput}>
+
+            {!editando&&<div >
               <InputField label="Senha" placeholder="Senha do funcionário" value={password} setValue={setPassword}/>
             </div>}
-            <div className={styles.containerInput}>
+
+            <div >
               <InputField label="Telefone" placeholder="Telefone do funcionário" value={phone} setValue={setPhone}/>
             </div>
-            <div className={styles.containerInput}>
+
+            <div >
               <InputField label="Documento" placeholder="Documento do funcionário" value={doc} setValue={setDoc}/>
             </div>
-            <div className={styles.containerInput}>
+
+            <div >
               <InputField label="Endereço" placeholder="Endereço do funcionário" value={address} setValue={setAddress}/>
             </div>
-            {editando&&<div className={styles.containerInput}>
+
+            {editando&&<div >
                  <p className={bloqueado?styles.bloqueado:styles.desbloqueado} onClick={onBloqueadoClick}>{bloqueado?'Desbloquear':'Bloquear'}</p>
             </div>}
             
-
             <button onClick={onSalvar} className={styles.botaoSalvar}>{!isLoading?'Salvar':<ReactLoading type="bars" color="#000" height={30} width={30}/>}</button>
         </div>
        
