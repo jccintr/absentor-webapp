@@ -66,7 +66,7 @@ const Avatar = () => {
        
         <label className={styles.labelInput}for="imagem">Selecione o novo avatar</label>
         <input className={styles.input} type="file"  id="imagem" name="imagem" onChange={handlerImagem}/>
-        <img className={styles.avatar}   ref={imgRef} alt={loggedUser.name} />
+        <img className={styles.avatar}   ref={imgRef} alt="" />
         <button onClick={onSalvar} className={styles.botaoSalvar}>{!isLoading?'Salvar':<ReactLoading type="bars" color="#000" height={30} width={30}/>}</button>
        
     </div>
