@@ -14,11 +14,10 @@ const Avatar = () => {
   const [isLoading,setIsLoading] = useState(false);
   const imgRef = useRef();
   const [novoAvatar,setNovoAvatar] = useState(null);
+  const [novoAvatarScreen,setNovoAvatarScreen] = useState(null);
   const navigate = useNavigate();
- // const params = useLocation();
- // let user = params.state.user;
-//  let userAvatar = params.state.userAvatar;
-
+  const [isAvatarSelected,setIsAvatarSelected] = useState(false);
+ 
  
   const onLogout = () => {
     setLogged(false);
@@ -44,9 +43,11 @@ const Avatar = () => {
 
   const handlerImagem = async (e) => {
     if(e.target.files[0]){
-      imgRef.current.src = URL.createObjectURL(e.target.files[0]);
       
-      setNovoAvatar(e.target.files[0]);
+     // imgRef.current.src = URL.createObjectURL(e.target.files[0]);
+    
+     setNovoAvatar(e.target.files[0]);
+      setNovoAvatarScreen(URL.createObjectURL(e.target.files[0]));
    
    }
   
@@ -64,9 +65,9 @@ const Avatar = () => {
         <div className={styles.blueline}></div>
         {loggedUser.avatar===null?<RxAvatar className={styles.avatar_icone} size={100}/>:<img className={styles.avatar}  src={`${Api.base_storage}/${loggedUser.avatar}`} alt={loggedUser.name} />}
        
-        <label className={styles.labelInput}for="imagem">Selecione o novo avatar</label>
-        <input className={styles.input} type="file"  id="imagem" name="imagem" onChange={handlerImagem}/>
-        <img className={styles.avatar}   ref={imgRef} alt="" />
+        <label className={styles.labelInput}for="imagem">Selecione o seu novo avatar</label>
+        <input className={styles.input} type="file" accept='image/*' id="imagem" name="imagem" onChange={handlerImagem}/>
+        {novoAvatarScreen&&<img className={styles.avatar}  src={novoAvatarScreen} alt=""/>}
         <button onClick={onSalvar} className={styles.botaoSalvar}>{!isLoading?'Salvar':<ReactLoading type="bars" color="#000" height={30} width={30}/>}</button>
        
     </div>
