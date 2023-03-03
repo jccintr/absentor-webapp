@@ -6,9 +6,11 @@ import styles from "./styles.module.css";
 import TableUsers from '../../components/tableUsers/TableUsers';
 import { FaPlusCircle } from "react-icons/fa";
 import DataContext from '../../context/DataContext';
+import ReactLoading from 'react-loading';
 
 const UsersEmpresa = () => {
   const [users,setUsers] = useState([]);
+  const [isLoading,setIsLoading] = useState(false);
   const {setLogged} = useContext(DataContext);
   const navigate = useNavigate();
   const params = useLocation();
@@ -20,12 +22,14 @@ const UsersEmpresa = () => {
   
   useEffect(()=>{
     const getUsersEmpresa = async () =>{
+      setIsLoading(true)
        let response = await Api.getUsersEmpresa(idEmpresa);
        if (response.status === 200){
         const json = await response.json();
         setUsers(json);
+        
        }
-       
+       setIsLoading(false);
     };
     getUsersEmpresa();
 },[]);
@@ -59,7 +63,8 @@ const onView  = async (id) => {
             <h2>{nomeEmpresa}</h2>
             <h4>Funcionários</h4>
             <div className={styles.blueline}></div>
-            {users.length===0&&<h5 className={styles.noRecords}>Esta empresa ainda não tem funcionários.</h5>}
+            {isLoading&&<ReactLoading type="bars" color="#00b1f3" height={30} width={30}/>}
+            {!isLoading&&users.length===0&&<h5 className={styles.noRecords}>Funcionários não encontrados.</h5>}
             <TableUsers users={users} onEdit={onEdit} onView={onView}/> 
         </div>
         <FaPlusCircle className={styles.addButton} size={50} onClick={onAdd} /> 
@@ -68,3 +73,9 @@ const onView  = async (id) => {
 }
 
 export default UsersEmpresa
+
+/*
+
+{users.length===0&&<h5 className={styles.noRecords}>Esta empresa ainda não tem funcionários.</h5>}
+
+*/

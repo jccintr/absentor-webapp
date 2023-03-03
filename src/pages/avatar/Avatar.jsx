@@ -1,4 +1,4 @@
-import React, {useRef,useState,useContext} from 'react'
+import React, {useState,useContext} from 'react'
 import {useNavigate } from 'react-router-dom';
 import Api from '../../Api';
 import Header from '../../components/header/Header';
@@ -78,49 +78,3 @@ const Avatar = () => {
 
 export default Avatar
 
-
-/*
-
- const adicionaImagem = async () => {
-    const fd = new FormData();
-    fd.append('servico_id',idServico);
-    fd.append('imagem',novaImagem);
-    let response = await Api.addImagem(fd);
-    if(response.status===201){
-      let json = await Api.getImagensByServico(idServico);
-      setImagens(json);
-    }
-  }
-  
-  
-  
-  
-    <FormControl>
-                    <FormLabel>
-                      <Text as='b'>Adicionar imagem:</Text>
-                     </FormLabel>
-                    <input type="file"  id="imagem" name="imagem" onChange={handlerImagem}/>
-                  </FormControl>  
-                  <Button color='red'  onClick={adicionaImagem}>Adicionar</Button>
-              </HStack>              
-            </form>
-            
-            
-            
-            
-              addImagem: async (fd) => {
-    const response = await fetch(`${BASE_API}/imagens`, {
-        method: 'POST',
-        body: fd
-    });
-    return response;
-
-
-    const handlerImagem = (e) => {
-
- 
-  setNovaImagem(e.target.files[0]);
-
-}
-
-*/

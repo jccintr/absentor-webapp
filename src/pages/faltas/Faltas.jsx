@@ -7,6 +7,7 @@ import DataContext from '../../context/DataContext';
 import ReactDatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css"
 import TableFaltas from '../../components/tableFaltas/TableFaltas';
+import ReactLoading from 'react-loading';
 
 const days = ['Dom','Seg','Ter','Qua','Qui','Sex','Sab'];
 const months = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
@@ -24,6 +25,7 @@ const locale = {
 const Faltas = () => {
     const {setLogged,loggedUser} = useContext(DataContext);
     const [faltas,setfaltas] = useState([]);
+    const [isLoading,setIsLoading] = useState(false);
     const [data,setData] = useState(new Date());
     const navigate = useNavigate();
     const params = useLocation();
@@ -31,8 +33,10 @@ const Faltas = () => {
 
 
     const getFaltas = async () => {
+      setIsLoading(true);
       let json = await Api.getFaltas(funcionario.id,data.getFullYear(),data.getMonth()+1);
       setfaltas(json);
+      setIsLoading(false);
     };
 
 
@@ -68,7 +72,8 @@ const onLogout = () => {
                showMonthYearPicker
                showFullMonthYearPicker
              />
-              <h5 className={styles.noRecords}>{faltas.length===0?'Faltas não encontradas.':faltas.length > 1 ?faltas.length + ' faltas encontradas.': faltas.length + ' falta encontrada.'}</h5>
+             {isLoading&&<ReactLoading type="bars" color="#00b1f3" height={30} width={30}/>}
+             {!isLoading&&<h5 className={styles.noRecords}>{faltas.length===0?'Faltas não encontradas.':faltas.length > 1 ?faltas.length + ' faltas encontradas.': faltas.length + ' falta encontrada.'}</h5>}
              <TableFaltas faltas={faltas} />
         </div>
      </div>

@@ -5,9 +5,11 @@ import Header from '../../components/header/Header';
 import styles from "./styles.module.css";
 import TableFuncionarios from '../../components/tableFuncionarios/TableFuncionarios';
 import DataContext from '../../context/DataContext';
+import ReactLoading from 'react-loading';
 
 const SelectFuncionario = () => {
   const [users,setUsers] = useState([]);
+  const [isLoading,setIsLoading] = useState(false);
   const {setLogged} = useContext(DataContext);
   const navigate = useNavigate();
   const params = useLocation();
@@ -20,10 +22,12 @@ const SelectFuncionario = () => {
 
   useEffect(()=>{
     const getUsersEmpresa = async () =>{
+       setIsLoading(true);
        let response = await Api.getUsersEmpresa(idEmpresa);
        if (response.status === 200){
         const json = await response.json();
         setUsers(json);
+        setIsLoading(false);
        }
        
     };
@@ -55,7 +59,7 @@ const SelectFuncionario = () => {
             <h2>{nomeEmpresa}</h2>
             <h4>Selecione um funcionário</h4>
             <div className={styles.blueline}></div>
-            {users.length===0&&<h5 className={styles.noRecords}>Esta empresa ainda não tem funcionários.</h5>}
+            {isLoading&&<ReactLoading type="bars" color="#00b1f3" height={30} width={30}/>}
             <TableFuncionarios funcionarios={users} onFuncionarioClick={onFuncionarioClick}/> 
         </div>
     </div>
