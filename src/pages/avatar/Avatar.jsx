@@ -63,7 +63,8 @@ const Avatar = () => {
         <h4>Avatar Atual</h4>
         <div className={styles.blueline}></div>
         {loggedUser.avatar===null?<RxAvatar className={styles.avatar_icone} size={100}/>:<img className={styles.avatar}  src={`${Api.base_storage}/${loggedUser.avatar}`} alt={loggedUser.name} />}
-        <h4>Selecione o novo avatar</h4>
+       
+        <label className={styles.labelInput}for="imagem">Selecione o novo avatar</label>
         <input className={styles.input} type="file"  id="imagem" name="imagem" onChange={handlerImagem}/>
         <img className={styles.avatar}   ref={imgRef} alt={loggedUser.name} />
         <button onClick={onSalvar} className={styles.botaoSalvar}>{!isLoading?'Salvar':<ReactLoading type="bars" color="#000" height={30} width={30}/>}</button>
