@@ -27,10 +27,10 @@ const SelectFuncionario = () => {
        if (response.status === 200){
         const json = await response.json();
         setUsers(json);
-        setIsLoading(false);
+        
        }
-       
-    };
+       setIsLoading(false);
+          };
     getUsersEmpresa();
 },[]);
 
@@ -60,6 +60,7 @@ const SelectFuncionario = () => {
             <h4>Selecione um funcionário</h4>
             <div className={styles.blueline}></div>
             {isLoading&&<ReactLoading type="bars" color="#00b1f3" height={30} width={30}/>}
+            {!isLoading&&users.length===0&&<h5 className={styles.noRecords}>Funcionários não encontrados.</h5>}
             <TableFuncionarios funcionarios={users} onFuncionarioClick={onFuncionarioClick}/> 
         </div>
     </div>
