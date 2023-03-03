@@ -26,12 +26,13 @@ const DetUser = () => {
   
   let editando = params.state.editando;
   let empresa_id = 0
+  let empresa = null;
   if (editando) {
-      //navigate("/user", {state:{user: user,userEdit: jsonUser, editando: true}});
+       empresa = params.state.userEdit.empresa
        empresa_id = params.state.userEdit.empresa.id;
   } else 
   {
-    //navigate("/user", {state:{user: user,userEdit: null, editando: false,empresa: empresa}});
+     empresa = params.state.empresa
      empresa_id = params.state.empresa.id;
   }
  
@@ -54,10 +55,10 @@ const onSalvar = async () => {
     setIsLoading(true);  
     if (!editando) {
       let response = await Api.signUp(name,email,role,password,phone,doc,address,empresa_id);
-      console.log(response.status);
+      console.log('status apos add user= '+response.status);
       if(response.status===201){
-        toast.success('Usuário cadastrado com sucesso.');
-          navigate("/empresa/users", {state:{user: user,empresa: user.empresa}});
+          toast.success('Usuário cadastrado com sucesso.');
+          navigate("/empresa/users", {state:{user: user,empresa: empresa}});
       } else {
         toast.error("Falha ao cadastrar usuário.");
       }

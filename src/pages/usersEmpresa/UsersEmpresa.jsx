@@ -16,10 +16,9 @@ const UsersEmpresa = () => {
   const params = useLocation();
   let user = params.state.user;
   let empresa = params.state.empresa;
- 
   let idEmpresa = params.state.empresa.id;
   let nomeEmpresa = params.state.empresa.nome;
-  
+  console.log('empresa= '+empresa.nome);
   useEffect(()=>{
     const getUsersEmpresa = async () =>{
       setIsLoading(true)
@@ -40,8 +39,8 @@ const onLogout = () => {
   }
 
   const onAdd = () => {
-  
-   navigate("/user", {state:{user: user,userEdit: null, editando: false,empresa: empresa}});
+    console.log('onAdd User => ' + empresa.nome)
+    navigate("/user", {state:{user: user,userEdit: null, editando: false,empresa: empresa}});
 }
 
 const onEdit  = async (id) => {
