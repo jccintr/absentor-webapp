@@ -12,11 +12,11 @@ import ReactLoading from 'react-loading';
 const Avatar = () => {
   const {setLogged,loggedUser} = useContext(DataContext);
   const [isLoading,setIsLoading] = useState(false);
-  const imgRef = useRef();
+  //const imgRef = useRef();
   const [novoAvatar,setNovoAvatar] = useState(null);
   const [novoAvatarScreen,setNovoAvatarScreen] = useState(null);
   const navigate = useNavigate();
-  const [isAvatarSelected,setIsAvatarSelected] = useState(false);
+ 
  
  
   const onLogout = () => {
