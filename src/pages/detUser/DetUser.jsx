@@ -54,6 +54,7 @@ const onSalvar = async () => {
     setIsLoading(true);  
     if (!editando) {
       let response = await Api.signUp(name,email,role,password,phone,doc,address,empresa_id);
+      console.log(response.status);
       if(response.status===201){
         toast.success('Usuário cadastrado com sucesso.');
           navigate("/empresa/users", {state:{user: user,empresa: user.empresa}});

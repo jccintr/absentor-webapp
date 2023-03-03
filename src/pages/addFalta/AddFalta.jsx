@@ -44,7 +44,7 @@ const AddFalta = () => {
       setIsLoading(true);
       const fd = new FormData();
       let d = data.getFullYear()+'-'+(data.getMonth()+1)+'-'+data.getDate();
-      console.log(d);
+      
       fd.append('empresa_id',funcionario.empresa.id);
       fd.append('funcionario_id',funcionario.id);
       fd.append('data',d);

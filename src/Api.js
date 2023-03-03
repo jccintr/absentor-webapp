@@ -8,7 +8,7 @@ const BASE_API = 'https://absentor-api.devbr.pt/api';
 //const BASE_API = 'http://177.104.209.216:8000/api';
 
 export default {
- //base_storage: 'http://localhost:8000/storage',
+// base_storage: 'http://localhost:8000/storage',
   //base_storage: 'https://absentor.tripsun.tk/storage',
   base_storage: 'https://absentor-api.devbr.pt/storage',
  // base_storage: 'http://192.168.0.107:8000/storage',
@@ -59,14 +59,14 @@ export default {
     const json = await req.json();
     return json;
 },
-   addEmpresa: async (nome) => {
+   addEmpresa: async (nome,email,phone,address) => {
     const response = await fetch(`${BASE_API}/empresas`, {
         method: 'POST',
         headers: {
             Accept: 'application/json',
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({nome})
+        body: JSON.stringify({nome,email,phone,address})
     });
     return response;
    },
@@ -75,14 +75,14 @@ export default {
     const json = await req.json();
     return json;
 },
-updateEmpresa: async (id,nome) => {
+updateEmpresa: async (id,nome,email,phone,address) => {
     const response = await fetch(`${BASE_API}/empresas/${id}`, {
         method: 'PUT',
         headers: {
             Accept: 'application/json',
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({nome})
+        body: JSON.stringify({nome,email,phone,address})
     });
     //const json = await req.json();
     return response;
