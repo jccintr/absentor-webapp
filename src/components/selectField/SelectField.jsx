@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from "./styles.module.css";
 
-const SelectField = ({label,placeholder, value, setValue}) => {
+const SelectField = ({label, value, setValue}) => {
   return (
     <div className={styles.container}>
         <p className={styles.label}>{label}</p>

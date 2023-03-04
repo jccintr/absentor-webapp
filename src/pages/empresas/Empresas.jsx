@@ -43,7 +43,7 @@ const Empresas = () => {
     const onListUsers = async (idEmpresa) => {
       
       let jsonEmpresa = await Api.getEmpresa(idEmpresa);
-      console.log('onlistusers empresa= '+ jsonEmpresa.nome);
+      //console.log('onlistusers empresa= '+ jsonEmpresa.nome);
       navigate("/empresa/users", {state:{user: user,empresa: jsonEmpresa}});
     }
 

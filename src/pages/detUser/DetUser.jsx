@@ -20,7 +20,7 @@ const DetUser = () => {
   const [phone,setPhone] = useState(params.state.userEdit===null?'':params.state.userEdit.phone);
   const [doc,setDoc] = useState(params.state.userEdit===null?'':params.state.userEdit.doc);
   const [address,setAddress] = useState(params.state.userEdit===null?'':params.state.userEdit.address);
-  const [role,setRole] =useState(params.state.userEdit===null?'':params.state.userEdit.role);
+  const [role,setRole] =useState(params.state.userEdit===null?'0':params.state.userEdit.role);
   const [bloqueado,setBloqueado] = useState(params.state.userEdit===null?'':params.state.userEdit.bloqueado);
   const [isLoading,setIsLoading] = useState(false);
   
@@ -53,9 +53,16 @@ const onSalvar = async () => {
    
  
     setIsLoading(true);  
+    if(role==='0'){
+      toast.error("Selecione o cargo por favor.");
+      setIsLoading(false);
+      return;
+    }
+
     if (!editando) {
       let response = await Api.signUp(name,email,role,password,phone,doc,address,empresa_id);
-      console.log('status apos add user= '+response.status);
+      console.log('role='+role);
+      console.log('response.status= '+ response.status);
       if(response.status===201){
           toast.success('Usuário cadastrado com sucesso.');
           navigate("/empresa/users", {state:{user: user,empresa: empresa}});
