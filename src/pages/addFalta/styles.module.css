@@ -53,13 +53,23 @@
   border: none;
  }
   
+ .labelInput {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: white;
+  border: 1px dashed var(--primaryColor);
+  padding: 15px 40px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+input[type="file"] {
+  display: none;
+  margin-top: 20px;
+  color: white;
+  margin-bottom: 20px;
+  width: 340px;
+}
   
-  .input {
-    margin-top: 20px;
-    color: white;
-    margin-bottom: 20px;
-    width: 340px;
-  }
   
   .botaoSalvar {
     width: 320px;
