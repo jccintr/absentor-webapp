@@ -93,7 +93,7 @@ const AddFalta = () => {
               <InputField label="Motivo da falta" placeholder="Motivo da falta" value={motivo} setValue={setMotivo}/>
         </div>
        
-        <label className={styles.labelInput} for="anexo">Anexar documento</label>
+        <label className={styles.labelInput} for="anexo">{anexo===null?'Anexar documento':'Documento anexado'}</label>
         <input className={styles.input} type="file"  id="anexo" name="anexo" onChange={handlerAnexo}/>
         <button onClick={onSalvar} className={styles.botaoSalvar}>{!isLoading?'Salvar':<ReactLoading type="bars" color="#000" height={30} width={30}/>}</button>
     </div>
