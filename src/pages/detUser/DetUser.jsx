@@ -67,7 +67,8 @@ const onSalvar = async () => {
           toast.success('Usuário cadastrado com sucesso.');
           navigate("/empresa/users", {state:{user: user,empresa: empresa}});
       } else {
-        toast.error("Falha ao cadastrar usuário.");
+        const json = await response.json();
+        toast.error(json.erro);
       }
   
   } else {
@@ -77,7 +78,8 @@ const onSalvar = async () => {
        toast.success('Usuário alterado com sucesso.');
        navigate("/empresa/users", {state:{user: user, empresa: params.state.userEdit.empresa}});
     }else {
-      toast.error("Falha ao alterar usuário.");
+        const json = await response.json();
+        toast.error(json.erro);
     }
 
   }

@@ -26,7 +26,7 @@ const Main = () => {
         <Header onLogout={onLogout} />
         <div className={styles.body}>
             {!user.isAdmin ? <h2>{loggedUser.empresa.nome}</h2>:''}
-            <h4>Olá {loggedUser.name} ! O que você deseja ?</h4>
+            <h4>Olá, {loggedUser.name} ! O que você deseja ?</h4>
             <div className={styles.blueline}></div>
             {user.role===0&&<MenuAdmin />}
             {user.role===1&&<MenuGerente />}
